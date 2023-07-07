@@ -22,4 +22,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deploy on Netlify
 
-https://neon-peony-89b6b6.netlify.app/
+[https://neon-peony-89b6b6.netlify.app/]
