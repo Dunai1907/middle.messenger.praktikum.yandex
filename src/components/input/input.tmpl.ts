@@ -1,6 +1,4 @@
-export default (
-  `<label class={{ classLabel }}>
-    {{ name }}
-    <input type={{ type }} class={{ classInput }} />
-  </label>`
-);
+export default `<label class={{ classLabel }}>
+    {{ labelName }}
+    <input type={{ type }} name={{inputName}} class={{ classInput }} />
+  </label>`;

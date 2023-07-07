@@ -1,4 +1,4 @@
 export default `<div class={{classWrapper}}>
-<span class={{className}}>{{name}}</span>
-<input type={{type}} class={{classValue}} value={{value}} ></input>
+<span class={{className}}>{{spanName}}</span>
+<input type={{type}} name={{inputName}} class={{classValue}} value={{value}} ></input>
 </div>`;

@@ -16,70 +16,81 @@ const template = Handlebars.compile(dataModel);
 export const email = template({
   classWrapper: `${styles.data_wrapper}`,
   className: `${styles.span_name}`,
-  name: "Почта",
+  spanName: "Почта",
   classValue: `${styles.input_value}`,
   type: "email",
   value: `${data.email}`,
+  inputName: "email",
 });
 export const login = template({
   classWrapper: `${styles.data_wrapper}`,
   className: `${styles.span_name}`,
-  name: "Логин",
+  spanName: "Логин",
   classValue: `${styles.input_value}`,
   type: "text",
   value: `${data.login}`,
+  inputName: "login",
 });
 export const firstName = template({
   classWrapper: `${styles.data_wrapper}`,
   className: `${styles.span_name}`,
-  name: "Имя",
+  spanName: "Имя",
   classValue: `${styles.input_value}`,
   type: "text",
   value: `${data.first_name}`,
+  inputName: "first_name",
 });
 export const lastName = template({
   classWrapper: `${styles.data_wrapper}`,
   className: `${styles.span_name}`,
-  name: "Фамилия",
+  spanName: "Фамилия",
   classValue: `${styles.input_value}`,
   type: "text",
   value: `${data.second_name}`,
+  inputName: "second_name",
 });
 export const chatsName = template({
   classWrapper: `${styles.data_wrapper}`,
   className: `${styles.span_name}`,
-  name: "Имя в чате",
+  spanName: "Имя в чате",
   classValue: `${styles.input_value}`,
   type: "text",
   value: `${data.display_name}`,
+  inputName: "display_name",
 });
 export const phone = template({
   classWrapper: `${styles.data_wrapper}`,
   className: `${styles.span_name}`,
-  name: "Телефон",
+  spanName: "Телефон",
   classValue: `${styles.input_value}`,
   type: "tel",
   value: `${data.phone}`,
+  inputName: "phone",
 });
 
 export const oldPassword = template({
   classWrapper: `${styles.data_wrapper}`,
   className: `${styles.span_name}`,
-  name: "Старый пароль",
+  spanName: "Старый пароль",
   classValue: `${styles.input_value}`,
   type: "password",
+  inputName: "oldPassword",
 });
+
 export const newPassword = template({
   classWrapper: `${styles.data_wrapper}`,
   className: `${styles.span_name}`,
-  name: "Новый пароль",
+  spanName: "Новый пароль",
   classValue: `${styles.input_value}`,
   type: "password",
+  inputName: "newPassword",
 });
+
 export const repeatPassword = template({
   classWrapper: `${styles.data_wrapper}`,
   className: `${styles.span_name}`,
-  name: "Повторите новый пароль",
+  spanName: "Повторите новый пароль",
   classValue: `${styles.input_value}`,
   type: "password",
+  inputName: "newPassword",
 });
