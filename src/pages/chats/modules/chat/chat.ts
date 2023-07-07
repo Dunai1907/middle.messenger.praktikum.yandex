@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
-import styles from "./chat.module.scss";
 import chat from "./chat.tmpl";
 import { users } from "../../../../constants/constants";
+import styles from "./chat.module.scss";
 
 const template = Handlebars.compile(chat);
 

@@ -1,5 +1,5 @@
-import avatar from "../../../components/avatar/avatar";
-import groupSVG from "../../../../static/decor/group.svg";
+import avatar from "../../../../components/avatar/avatar";
+import groupSVG from "../../../../../static/decor/group.svg";
 import styles from "./changeData.module.scss";
 import blockData from "./blockData/blockData";
 

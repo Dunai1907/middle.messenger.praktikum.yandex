@@ -1,6 +1,6 @@
-import styles from "./listChats.module.scss";
 import profileSVG from "../../../../../static/decor/profile.svg";
 import searchSVG from "../../../../../static/decor/search.svg";
+import styles from "./listChats.module.scss";
 
 const listChats = document.createElement("aside");
 listChats.classList.add(styles.list_chats);

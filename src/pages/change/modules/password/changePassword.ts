@@ -1,5 +1,5 @@
-import avatar from "../../../components/avatar/avatar";
-import groupSVG from "../../../../static/decor/group.svg";
+import avatar from "../../../../components/avatar/avatar";
+import groupSVG from "../../../../../static/decor/group.svg";
 import styles from "./changePassword.module.scss";
 import blockPassword from "./blockPassword/blockPassword";
 

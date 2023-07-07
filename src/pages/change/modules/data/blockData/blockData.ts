@@ -1,26 +1,23 @@
-import * as data from "../../components/data/data";
+import * as data from "../../../../../components/input/input";
 import styles from "./blockData.module.scss";
 
 const blockData = document.createElement("form");
 blockData.classList.add(styles.blockData_wrapper);
 
 blockData.innerHTML = `
-${data.email}
+${data.inputChangeEmail}
 <hr class=${styles.line} />
-${data.login}
+${data.inputChangeLogin}
 <hr class=${styles.line} />
-${data.firstName}
+${data.inputChangeFirstName}
 <hr class=${styles.line} />
-${data.lastName}
+${data.inputChangeLastName}
 <hr class=${styles.line} />
-${data.chatsName}
+${data.inputChangeChatsName}
 <hr class=${styles.line} />
-${data.phone}
-<button
-
-class=${styles.submit}
->
-<span class=${styles.value}>Сохранить</span>
+${data.inputChangePhone}
+<button class=${styles.submit}>
+ <span class=${styles.value}>Сохранить</span>
 </button>
 `;
 

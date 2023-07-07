@@ -2,8 +2,8 @@ import login from "./pages/login/login";
 import registration from "./pages/registration/registration";
 import chats from "./pages/chats/chats";
 import profile from "./pages/profile/profile";
-import changeData from "./pages/change/data/changeData";
-import changePassword from "./pages/change/password/changePassword";
+import changeData from "./pages/change/modules/data/changeData";
+import changePassword from "./pages/change/modules/password/changePassword";
 import Router from "./router";
 import "../styles/globals.css";
 
