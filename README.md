@@ -18,9 +18,9 @@ These port is in use:
 
 - 3000: [js](http://localhost:3000/).
 
-## Deploy on Netlify
+## Netlify link
 
-Open [[Netlify Platform]](https://neon-peony-89b6b6.netlify.app/) with your browser to see the result.
+- (https://neon-peony-89b6b6.netlify.app/).
 
 ## For more information
 
