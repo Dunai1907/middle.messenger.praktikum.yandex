@@ -4,11 +4,11 @@ const blockAction = document.createElement("div");
 blockAction.classList.add(styles.blockAction_wrapper);
 
 blockAction.innerHTML = `
-<a class=${styles.action} href='/changeData'>Изменить данные</a>
+<a class="${styles.action} ${styles.mediumBlue}" href='/changeData'>Изменить данные</a>
 <hr class=${styles.line} />
-<a class=${styles.action} href='/changePassword'>Изменить пароль</a>
+<a class="${styles.action} ${styles.mediumBlue}" href='/changePassword'>Изменить пароль</a>
 <hr class=${styles.line} />
-<a class=${styles.exit} href='/'>Выход</a>
+<a class="${styles.action} ${styles.red}" href='/'>Выход</a>
 `;
 
 export default blockAction;
