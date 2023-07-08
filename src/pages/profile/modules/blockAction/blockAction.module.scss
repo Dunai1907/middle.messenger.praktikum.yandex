@@ -1,0 +1,36 @@
+.blockAction_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  width: 510px;
+  margin: 10px 0;
+  border: solid 1px #eaeaea;
+
+  &:hover {
+    border: 1px solid #0d99ff;
+  }
+}
+
+.action {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}
+
+.mediumBlue {
+  color: #3369f3;
+}
+
+.red {
+  color: #ff0000;
+}

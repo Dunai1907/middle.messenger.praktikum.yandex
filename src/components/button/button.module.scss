@@ -1,0 +1,45 @@
+.buttonBig {
+  width: auto;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: #ffffff;
+}
+
+.buttonSmall {
+  width: 280px;
+  height: 37px;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: rgba(51, 105, 243, 1);
+
+  &:hover {
+    border: 1px solid #0d99ff;
+  }
+}
+
+.buttonBig_text {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+
+  &:hover {
+    text-decoration: underline rgba(51, 105, 243, 1);
+  }
+}
+
+.buttonSmall_text {
+  font-size: 13px;
+  line-height: 13px;
+  color: #ffffff;
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}

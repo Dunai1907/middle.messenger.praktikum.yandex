@@ -1,0 +1,26 @@
+.user_chat {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.select_chat {
+  display: flex;
+  width: 257px;
+  height: 12px;
+}
+
+.span_select_chat {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: 0em;
+  color: #999999;
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}

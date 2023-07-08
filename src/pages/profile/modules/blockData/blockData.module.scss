@@ -1,0 +1,14 @@
+.blockData_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.line {
+  width: 510px;
+  margin: 10px 0;
+  border: solid 1px #eaeaea;
+  &:hover {
+    border: 1px solid #0d99ff;
+  }
+}
