@@ -4,7 +4,7 @@ import profilePage from "./pages/profile";
 import changeDataPage from "./pages/changeData";
 import changePasswordPage from "./pages/changePassword";
 import Router from "./router";
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import chatsPage from "./pages/chats";
 
 window.addEventListener("DOMContentLoaded", () => {
