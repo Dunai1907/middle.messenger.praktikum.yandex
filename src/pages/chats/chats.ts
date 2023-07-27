@@ -1,18 +1,8 @@
-import styles from "./chats.module.scss";
-import arrChat from "./modules/chat/chat";
-import listChats from "./modules/listChats/listChats";
-import userChat from "./modules/userChat/userChat";
+import tpl from "./chats.tmpl";
+import Block from "../../services/Block";
 
-const chats = document.createElement("section");
-chats.classList.add(styles.chats_wrapper);
-chats.append(listChats);
-
-const form = chats.querySelector("#search");
-
-arrChat.reverse().forEach((item) => {
-  form?.insertAdjacentHTML("afterend", `${item}`);
-});
-
-chats.append(userChat);
-
-export default chats;
+export default class Chats extends Block {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

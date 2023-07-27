@@ -1,14 +1,8 @@
-import styles from "./blockAction.module.scss";
+import tpl from "./blockAction.tmpl";
+import Block from "../../../../services/Block";
 
-const blockAction = document.createElement("div");
-blockAction.classList.add(styles.blockAction_wrapper);
-
-blockAction.innerHTML = `
-<a class="${styles.action} ${styles.mediumBlue}" href='/changeData'>Изменить данные</a>
-<hr class=${styles.line} />
-<a class="${styles.action} ${styles.mediumBlue}" href='/changePassword'>Изменить пароль</a>
-<hr class=${styles.line} />
-<a class="${styles.action} ${styles.red}" href='/'>Выход</a>
-`;
-
-export default blockAction;
+export default class BlockAction extends Block {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

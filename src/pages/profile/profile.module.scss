@@ -46,3 +46,95 @@
     border: 1px solid #0d99ff;
   }
 }
+
+.avatar {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: #efefef;
+
+  &:hover {
+    border: 2px solid #0d99ff;
+  }
+}
+
+.line {
+  width: 510px;
+  margin: 10px 0;
+  border: solid 1px #eaeaea;
+
+  &:hover {
+    border: 1px solid #0d99ff;
+  }
+}
+
+.blockData {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.data_wrapper {
+  display: flex;
+  width: 510px;
+  justify-content: space-between;
+}
+
+.span_name {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #1e1e1e;
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}
+
+.span_value {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: #999999;
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}
+
+.blockAction {
+  display: flex;
+  flex-direction: column;
+}
+
+.action {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}
+
+.mediumBlue {
+  color: #3369f3;
+}
+
+.red {
+  color: #ff0000;
+}

@@ -1,0 +1,152 @@
+.changeData_wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.back {
+  display: flex;
+  width: 64px;
+  background-color: #fbfbfb;
+  border: 2px solid transparent;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    border: 2px solid #0d99ff;
+  }
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  margin: 60px auto 0 auto;
+}
+
+.name {
+  margin-top: 21px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-bottom: 60px;
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}
+
+.line {
+  width: 510px;
+  margin: 10px 0;
+  border: solid 1px #eaeaea;
+  &:hover {
+    border: 1px solid #0d99ff;
+  }
+}
+
+.lineNone {
+  display: none;
+}
+
+.avatar {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: #efefef;
+
+  &:hover {
+    border: 2px solid #0d99ff;
+  }
+}
+
+.blockData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 97px;
+}
+
+.submit {
+  width: 280px;
+  height: 37px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 60px;
+  background-color: #3369f3;
+
+  &:hover {
+    border: 2px solid #0d99ff;
+  }
+}
+
+.value {
+  color: #ffffff;
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}
+
+.change_lable {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #1e1e1e;
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}
+
+.change_input {
+  width: auto;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: right;
+  border: none;
+  color: #999999;
+
+  &:focus {
+    border: none;
+  }
+
+  &:hover {
+    text-decoration: 2px underline #0d99ff;
+  }
+}
+
+.error {
+  font-family: Inter;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 8px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: #ff2f2f;
+}
+
+.error_border {
+  border-radius: 5px;
+  border: 2px solid #ff2f2f;
+}
+
+.input_control {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

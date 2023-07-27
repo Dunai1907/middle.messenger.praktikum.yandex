@@ -1,9 +1,11 @@
 .user_chat {
+  position: relative;
   display: flex;
   height: 100vh;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 21px;
 }
 
 .select_chat {
@@ -22,5 +24,15 @@
 
   &:hover {
     text-decoration: 2px underline #0d99ff;
+  }
+}
+
+.line {
+  width: 100%;
+  border: 1px solid  #EAEAEA;
+  ;
+
+  &:hover {
+    border: 1px solid #0d99ff;
   }
 }
