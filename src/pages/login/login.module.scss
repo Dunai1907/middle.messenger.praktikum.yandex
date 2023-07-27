@@ -1,4 +1,4 @@
-.login_wrapper {
+.loginWrapper {
   display: flex;
   min-height: 100vh;
   align-items: center;
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.form_block {
+.formBlock {
   display: flex;
   width: 340px;
   height: 450px;
@@ -14,11 +14,11 @@
   align-items: center;
   justify-content: center;
   padding: 15px;
-  border: 2px solid #929292;
+  border: 2px solid rgba(153, 153, 153, 1);
   border-radius: 12px;
 
   &:hover {
-    border-color: #0d99ff;
+    border-color: rgba(13, 153, 255, 1);
   }
 }
 
@@ -29,27 +29,12 @@
   justify-content: center;
 }
 
-.unregistered {
-  width: auto;
-  margin-top: 20px;
-  font-family: Inter;
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 11px;
-  text-decoration: none;
-  color: rgba(51, 105, 243, 1);
-
-  &:hover {
-    text-decoration: 2px underline #0d99ff;
-  }
-}
-
 .line {
   width: 280px;
   border: 1px solid rgba(51, 105, 243, 1);
 
   &:hover {
-    border: 1px solid #0d99ff;
+    border: 1px solid rgba(13, 153, 255, 1);
   }
 }
 
@@ -58,25 +43,24 @@
   border: 0;
   padding: 5px 0;
   margin-bottom: 2px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
 
   &:focus {
-    border: 1px solid #ffffff;
+    border: 1px solid rgba(255, 255, 255, 1);
   }
 }
 
-.text_label {
+.textLabel {
   margin-top: 20px;
   width: 280px;
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 9px;
   font-weight: 500;
   line-height: 9px;
-  letter-spacing: 0em;
-  color: #999999;
+  color: rgba(153, 153, 153, 1);
 
   &:hover {
-    text-decoration: underline 2px #0d99ff;
+    text-decoration: underline 2px rgba(13, 153, 255, 1);
   }
 }
 
@@ -86,7 +70,7 @@
   display: flex;
   align-items: center;
   border: none;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .buttonSmall {
@@ -100,12 +84,12 @@
   background-color: rgba(51, 105, 243, 1);
 
   &:hover {
-    border: 1px solid #0d99ff;
+    border: 1px solid rgba(13, 153, 255, 1);
   }
 }
 
-.buttonBig_text {
-  font-family: Inter;
+.buttonBigText {
+  font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 20px;
@@ -116,32 +100,31 @@
   }
 }
 
-.buttonSmall_text {
+.buttonSmallText {
   font-size: 13px;
   line-height: 13px;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 1);
 
   &:hover {
-    text-decoration: 2px underline #0d99ff;
+    text-decoration: 2px underline rgba(13, 153, 255, 1);
   }
 }
 
 .error {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 8px;
   font-weight: 400;
   line-height: 8px;
-  letter-spacing: 0em;
   text-align: left;
-  color: #ff2f2f;
+  color: rgba(255, 47, 47, 1);
 }
 
-.error_border {
+.errorBorder {
   border-radius: 5px;
-  border: 2px solid #ff2f2f;
+  border: 2px solid rgba(255, 47, 47, 1);
 }
 
-.input_control {
+.inputControl {
   display: flex;
   flex-direction: column;
 }

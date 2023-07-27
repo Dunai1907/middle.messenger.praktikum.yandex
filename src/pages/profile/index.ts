@@ -35,62 +35,62 @@ const avatar = new Avatar("div", {
 });
 
 const dataEmail = new DataProfile("div", {
-  className: `${styles.span_name}`,
+  className: `${styles.spanName}`,
   name: "Почта",
-  classValue: `${styles.span_value}`,
+  classValue: `${styles.spanValue}`,
   value: `${data.email}`,
   attr: {
-    class: `${styles.data_wrapper}`,
+    class: `${styles.dataWrapper}`,
   },
 });
 
 const dataLogin = new DataProfile("div", {
-  className: `${styles.span_name}`,
+  className: `${styles.spanName}`,
   name: "Логин",
-  classValue: `${styles.span_value}`,
+  classValue: `${styles.spanValue}`,
   value: `${data.login}`,
   attr: {
-    class: `${styles.data_wrapper}`,
+    class: `${styles.dataWrapper}`,
   },
 });
 
 const dataFirstName = new DataProfile("div", {
-  className: `${styles.span_name}`,
+  className: `${styles.spanName}`,
   name: "Имя",
-  classValue: `${styles.span_value}`,
+  classValue: `${styles.spanValue}`,
   value: `${data.firstName}`,
   attr: {
-    class: `${styles.data_wrapper}`,
+    class: `${styles.dataWrapper}`,
   },
 });
 
 const dataSecondName = new DataProfile("div", {
-  className: `${styles.span_name}`,
+  className: `${styles.spanName}`,
   name: "Фамилия",
-  classValue: `${styles.span_value}`,
+  classValue: `${styles.spanValue}`,
   value: `${data.secondName}`,
   attr: {
-    class: `${styles.data_wrapper}`,
+    class: `${styles.dataWrapper}`,
   },
 });
 
 const dataChatsName = new DataProfile("div", {
-  className: `${styles.span_name}`,
+  className: `${styles.spanName}`,
   name: "Имя в чате",
-  classValue: `${styles.span_value}`,
+  classValue: `${styles.spanValue}`,
   value: `${data.chatsName}`,
   attr: {
-    class: `${styles.data_wrapper}`,
+    class: `${styles.dataWrapper}`,
   },
 });
 
 const dataPhone = new DataProfile("div", {
-  className: `${styles.span_name}`,
+  className: `${styles.spanName}`,
   name: "Телефон",
-  classValue: `${styles.span_value}`,
+  classValue: `${styles.spanValue}`,
   value: `${data.phone}`,
   attr: {
-    class: `${styles.data_wrapper}`,
+    class: `${styles.dataWrapper}`,
   },
 });
 
@@ -132,7 +132,7 @@ const profilePage = new Profile("div", {
   blockData,
   blockAction,
   attr: {
-    class: `${styles.profile_wrapper}`,
+    class: `${styles.profileWrapper}`,
   },
 });
 

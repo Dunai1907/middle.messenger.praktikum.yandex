@@ -19,7 +19,6 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 12px;
-  letter-spacing: 0em;
   color: #999999;
 
   &:hover {
@@ -29,9 +28,7 @@
 
 .line {
   width: 100%;
-  border: 1px solid  #EAEAEA;
-  ;
-
+  border: 1px solid #eaeaea;
   &:hover {
     border: 1px solid #0d99ff;
   }

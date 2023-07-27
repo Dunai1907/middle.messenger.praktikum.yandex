@@ -17,7 +17,7 @@ const setError = (element: any, message: string) => {
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
   errorDisplay.innerText = message;
-  element.classList.add(`${styles.error_border}`);
+  element.classList.add(`${styles.errorBorder}`);
 };
 
 const setSuccess = (element: any) => {
@@ -25,7 +25,7 @@ const setSuccess = (element: any) => {
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
   errorDisplay.innerText = "";
-  element.classList.remove(`${styles.error_border}`);
+  element.classList.remove(`${styles.errorBorder}`);
 };
 
 const validateInputs = () => {
@@ -112,15 +112,15 @@ const avatar = new Avatar("div", {
 });
 
 const oldPassword = new Input("div", {
-  classLabel: `${styles.change_lable}`,
+  classLabel: `${styles.changeLable}`,
   labelName: "Старый пароль",
-  classInput: `${styles.change_input}`,
+  classInput: `${styles.changeInput}`,
   type: "password",
   inputName: "current-password",
   classLine: `${styles.lineNone}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -128,15 +128,15 @@ const oldPassword = new Input("div", {
 });
 
 const newPassword = new Input("div", {
-  classLabel: `${styles.change_lable}`,
+  classLabel: `${styles.changeLable}`,
   labelName: "Новый пароль",
-  classInput: `${styles.change_input}`,
+  classInput: `${styles.changeInput}`,
   type: "password",
   inputName: "new-password",
   classLine: `${styles.lineNone}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -144,15 +144,15 @@ const newPassword = new Input("div", {
 });
 
 const repeatNewPassword = new Input("div", {
-  classLabel: `${styles.change_lable}`,
+  classLabel: `${styles.changeLable}`,
   labelName: "Повторите новый пароль",
-  classInput: `${styles.change_input}`,
+  classInput: `${styles.changeInput}`,
   type: "password",
   inputName: "repeat-new-password",
   classLine: `${styles.lineNone}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -187,7 +187,7 @@ const changePasswordPage = new ChangePassword("div", {
   avatar,
   blockPassword,
   attr: {
-    class: `${styles.changePassword_wrapper}`,
+    class: `${styles.changePasswordWrapper}`,
   },
 });
 

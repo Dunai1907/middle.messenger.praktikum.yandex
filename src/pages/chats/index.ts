@@ -37,7 +37,7 @@ messages.forEach((item) => {
   if (currentDate !== item.date) {
     currentDate = item.date;
     const date = {
-      classDate: `${styles.date_list_messages}`,
+      classDate: `${styles.dateListMessages}`,
       date: `${item.date}`,
     };
     arrMessage.push(date);
@@ -96,16 +96,16 @@ users.forEach((item) => {
     stylesMain: `${styles.main}`,
     stylesWrap: `${styles.wrap}`,
     stylesName: `${styles.name}`,
-    stylesSpanName: `${styles.span_name}`,
+    stylesSpanName: `${styles.spanName}`,
     name: `${item.name}`,
     stylesDate: `${styles.date}`,
-    stylesSpanDate: `${styles.span_date}`,
+    stylesSpanDate: `${styles.spanDate}`,
     date: `${item.date}`,
     stylesText: `${styles.text}`,
-    stylesSpanText: `${styles.span_text}`,
+    stylesSpanText: `${styles.spanText}`,
     text: `${item.text}`,
     stylesNumber: `${styles.number}`,
-    stylesSpanNumber: `${styles.span_number}`,
+    stylesSpanNumber: `${styles.spanNumber}`,
     number: `${item.number}`,
   };
   arrChat.push(chat);
@@ -116,7 +116,7 @@ const addUser = () => {
   const modalWindow = document.querySelector('[data-name="modalWindowAdd"]');
   modalWindow?.classList.remove(`${styles.modalWindowH}`);
   modalWindow?.classList.add(`${styles.modalWindowV}`);
-  block?.classList.toggle(`${styles.display_block}`);
+  block?.classList.toggle(`${styles.displayBlock}`);
 
   modalWindow?.addEventListener("click", (event) => {
     if (event.target === modalWindow) {
@@ -131,7 +131,7 @@ const deleteUser = () => {
   const modalWindow = document.querySelector('[data-name="modalWindowDelete"]');
   modalWindow?.classList.remove(`${styles.modalWindowH}`);
   modalWindow?.classList.add(`${styles.modalWindowV}`);
-  block?.classList.toggle(`${styles.display_block}`);
+  block?.classList.toggle(`${styles.displayBlock}`);
 
   modalWindow?.addEventListener("click", (event) => {
     if (event.target === modalWindow) {
@@ -143,7 +143,7 @@ const deleteUser = () => {
 
 const toggleActions = () => {
   const block = document.querySelector('[data-actions="actionsUser"]');
-  block?.classList.toggle(`${styles.display_block}`);
+  block?.classList.toggle(`${styles.displayBlock}`);
   const buttonAdd = document.querySelector('[data-action="addUser"]');
   const buttonDelete = document.querySelector('[data-action="deleteUser"]');
   buttonAdd?.addEventListener("click", addUser);
@@ -152,7 +152,7 @@ const toggleActions = () => {
 
 const toggleUpload = () => {
   const block = document.querySelector('[data-actions="uploadFiles"]');
-  block?.classList.toggle(`${styles.display_block}`);
+  block?.classList.toggle(`${styles.displayBlock}`);
 };
 
 const messageForm = (event: SubmitEvent) => {
@@ -179,7 +179,7 @@ const listChats = new ListChats("aside", {
   items: arrChat,
   profileSVG: `${profileSVG}`,
   attr: {
-    class: `${styles.list_chats}`,
+    class: `${styles.listChats}`,
   },
 });
 
@@ -227,14 +227,14 @@ const userData = new UserData("div", {
   userName: `${user.name}`,
   imgButtonActions,
   attr: {
-    class: `${styles.user_data}`,
+    class: `${styles.userData}`,
   },
 });
 
 const listMessages = new ListMessages("div", {
   items: arrMessage,
   attr: {
-    class: `${styles.list_messages}`,
+    class: `${styles.listMessages}`,
   },
 });
 
@@ -243,7 +243,7 @@ const createMessage = new CreateMessage("form", {
   stylesEnter: `${styles.enter}`,
   imgButtonSubmit,
   attr: {
-    class: `${styles.create_message}`,
+    class: `${styles.createMessage}`,
   },
   events: {
     submit: messageForm,
@@ -313,37 +313,37 @@ const userChat = new UserChat("section", {
   blockUpload,
   createMessage,
   attr: {
-    class: `${styles.user_chat}`,
+    class: `${styles.userChat}`,
   },
 });
 
 const buttonAdd = new Button("button", {
-  classSpan: `${styles.button_text}`,
+  classSpan: `${styles.buttonText}`,
   name: "Добавить",
   attr: {
-    class: `${styles.button_modalWindow}`,
+    class: `${styles.buttonModalWindow}`,
     type: "submit",
   },
 });
 
 const buttonDelete = new Button("button", {
-  classSpan: `${styles.button_text}`,
+  classSpan: `${styles.buttonText}`,
   name: "Удалить",
   attr: {
-    class: `${styles.button_modalWindow}`,
+    class: `${styles.buttonModalWindow}`,
     type: "submit",
   },
 });
 
 const modalWindowAdd = new ModalWindow("div", {
   classContent: `${styles.modalContent}`,
-  classSpan: `${styles.span_modalWindow}`,
+  classSpan: `${styles.spanModalWindow}`,
   name: "Добавить пользователя",
   dataName: "addUser_modal",
-  classLabel: `${styles.label_modalWindow}`,
+  classLabel: `${styles.labelModalWindow}`,
   labelName: "login",
   inputName: "addNewUser",
-  classInput: `${styles.input_modalWindow}`,
+  classInput: `${styles.inputModalWindow}`,
   classLine: `${styles.line}`,
   buttonAction: buttonAdd,
   attr: {
@@ -354,13 +354,13 @@ const modalWindowAdd = new ModalWindow("div", {
 
 const modalWindowDelete = new ModalWindow("div", {
   classContent: `${styles.modalContent}`,
-  classSpan: `${styles.span_modalWindow}`,
+  classSpan: `${styles.spanModalWindow}`,
   name: "Удалить пользователя",
   dataName: "deleteUser_modal",
-  classLabel: `${styles.label_modalWindow}`,
+  classLabel: `${styles.labelModalWindow}`,
   labelName: "login",
   inputName: "deleteUser",
-  classInput: `${styles.input_modalWindow}`,
+  classInput: `${styles.inputModalWindow}`,
   classLine: `${styles.line}`,
   buttonAction: buttonDelete,
   attr: {
@@ -375,7 +375,7 @@ const chatsPage = new Chats("section", {
   listChats,
   userChat,
   attr: {
-    class: `${styles.chats_wrapper}`,
+    class: `${styles.chatsWrapper}`,
   },
 });
 

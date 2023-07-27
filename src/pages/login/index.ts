@@ -13,7 +13,7 @@ const setError = (element: any, message: string) => {
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
   errorDisplay.innerText = message;
-  element.classList.add(`${styles.error_border}`);
+  element.classList.add(`${styles.errorBorder}`);
 };
 
 const setSuccess = (element: any) => {
@@ -21,7 +21,7 @@ const setSuccess = (element: any) => {
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
   errorDisplay.innerText = "";
-  element.classList.remove(`${styles.error_border}`);
+  element.classList.remove(`${styles.errorBorder}`);
 };
 
 const validateInputs = () => {
@@ -78,7 +78,7 @@ const loginForm = (event: SubmitEvent) => {
 };
 
 const buttonBig = new Button("button", {
-  classSpan: `${styles.buttonBig_text}`,
+  classSpan: `${styles.buttonBigText}`,
   name: "Вход",
   attr: {
     type: "submit",
@@ -87,7 +87,7 @@ const buttonBig = new Button("button", {
 });
 
 const buttonSmall = new Button("button", {
-  classSpan: `${styles.buttonSmall_text}`,
+  classSpan: `${styles.buttonSmallText}`,
   name: "Авторизоваться",
   attr: {
     type: "submit",
@@ -96,7 +96,7 @@ const buttonSmall = new Button("button", {
 });
 
 const inputLogin = new Input("div", {
-  classLabel: `${styles.text_label}`,
+  classLabel: `${styles.textLabel}`,
   labelName: "Логин",
   classInput: `${styles.input}`,
   type: "text",
@@ -104,7 +104,7 @@ const inputLogin = new Input("div", {
   classLine: `${styles.line}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -112,7 +112,7 @@ const inputLogin = new Input("div", {
 });
 
 const inputPassword = new Input("div", {
-  classLabel: `${styles.text_label}`,
+  classLabel: `${styles.textLabel}`,
   labelName: "Пароль",
   classInput: `${styles.input}`,
   type: "password",
@@ -120,7 +120,7 @@ const inputPassword = new Input("div", {
   classLine: `${styles.line}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -141,12 +141,12 @@ const form = new Form("form", {
 });
 
 const loginPage = new Login("section", {
-  className: `${styles.form_block}`,
+  className: `${styles.formBlock}`,
   form,
   url: "/registration",
   title: "Нет аккаунта?",
   attr: {
-    class: `${styles.login_wrapper}`,
+    class: `${styles.loginWrapper}`,
   },
 });
 

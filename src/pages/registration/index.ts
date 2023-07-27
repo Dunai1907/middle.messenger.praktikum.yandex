@@ -27,7 +27,7 @@ const setError = (element: any, message: string) => {
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
   errorDisplay.innerText = message;
-  element.classList.add(`${styles.error_border}`);
+  element.classList.add(`${styles.errorBorder}`);
 };
 
 const setSuccess = (element: any) => {
@@ -35,7 +35,7 @@ const setSuccess = (element: any) => {
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
   errorDisplay.innerText = "";
-  element.classList.remove(`${styles.error_border}`);
+  element.classList.remove(`${styles.errorBorder}`);
 };
 
 const validateInputs = () => {
@@ -163,7 +163,7 @@ const registrationForm = (event: SubmitEvent) => {
 };
 
 const buttonBig = new Button("button", {
-  classSpan: `${styles.buttonBig_text}`,
+  classSpan: `${styles.buttonBigText}`,
   name: "Регистрация",
   attr: {
     type: "submit",
@@ -172,7 +172,7 @@ const buttonBig = new Button("button", {
 });
 
 const buttonSmall = new Button("button", {
-  classSpan: `${styles.buttonSmall_text}`,
+  classSpan: `${styles.buttonSmallText}`,
   name: "Зарегистрироваться",
   attr: {
     type: "submit",
@@ -181,7 +181,7 @@ const buttonSmall = new Button("button", {
 });
 
 const inputEmail = new Input("div", {
-  classLabel: `${styles.text_label}`,
+  classLabel: `${styles.textLabel}`,
   labelName: "Почта",
   classInput: `${styles.input}`,
   type: "email",
@@ -189,7 +189,7 @@ const inputEmail = new Input("div", {
   classLine: `${styles.line}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -197,7 +197,7 @@ const inputEmail = new Input("div", {
 });
 
 const inputLogin = new Input("div", {
-  classLabel: `${styles.text_label}`,
+  classLabel: `${styles.textLabel}`,
   labelName: "Логин",
   classInput: `${styles.input}`,
   type: "text",
@@ -205,7 +205,7 @@ const inputLogin = new Input("div", {
   classLine: `${styles.line}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -213,7 +213,7 @@ const inputLogin = new Input("div", {
 });
 
 const inputFirstName = new Input("div", {
-  classLabel: `${styles.text_label}`,
+  classLabel: `${styles.textLabel}`,
   labelName: "Имя",
   classInput: `${styles.input}`,
   type: "text",
@@ -221,7 +221,7 @@ const inputFirstName = new Input("div", {
   classLine: `${styles.line}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -229,7 +229,7 @@ const inputFirstName = new Input("div", {
 });
 
 const inputSecondName = new Input("div", {
-  classLabel: `${styles.text_label}`,
+  classLabel: `${styles.textLabel}`,
   labelName: "Фамилия",
   classInput: `${styles.input}`,
   type: "text",
@@ -237,7 +237,7 @@ const inputSecondName = new Input("div", {
   classLine: `${styles.line}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -245,7 +245,7 @@ const inputSecondName = new Input("div", {
 });
 
 const inputPhone = new Input("div", {
-  classLabel: `${styles.text_label}`,
+  classLabel: `${styles.textLabel}`,
   labelName: "Телефон",
   classInput: `${styles.input}`,
   type: "tel",
@@ -253,7 +253,7 @@ const inputPhone = new Input("div", {
   classLine: `${styles.line}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -261,7 +261,7 @@ const inputPhone = new Input("div", {
 });
 
 const inputPassword = new Input("div", {
-  classLabel: `${styles.text_label}`,
+  classLabel: `${styles.textLabel}`,
   labelName: "Пароль",
   classInput: `${styles.input}`,
   type: "password",
@@ -269,7 +269,7 @@ const inputPassword = new Input("div", {
   classLine: `${styles.line}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -277,7 +277,7 @@ const inputPassword = new Input("div", {
 });
 
 const inputRepeatPassword = new Input("div", {
-  classLabel: `${styles.text_label}`,
+  classLabel: `${styles.textLabel}`,
   labelName: "Пароль (ещё раз)",
   classInput: `${styles.input}`,
   type: "password",
@@ -285,7 +285,7 @@ const inputRepeatPassword = new Input("div", {
   classLine: `${styles.line}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -311,12 +311,12 @@ const form = new Form("form", {
 });
 
 const registrationPage = new Registration("section", {
-  className: `${styles.form_block}`,
+  className: `${styles.formBlock}`,
   form,
   url: "/login",
   title: "Войти",
   attr: {
-    class: `${styles.regisration_wrapper}`,
+    class: `${styles.regisrationWrapper}`,
   },
 });
 

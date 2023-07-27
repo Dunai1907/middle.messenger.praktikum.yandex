@@ -31,7 +31,7 @@ const setError = (element: any, message: string) => {
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
   errorDisplay.innerText = message;
-  element.classList.add(`${styles.error_border}`);
+  element.classList.add(`${styles.errorBorder}`);
 };
 
 const setSuccess = (element: any) => {
@@ -39,7 +39,7 @@ const setSuccess = (element: any) => {
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
   errorDisplay.innerText = "";
-  element.classList.remove(`${styles.error_border}`);
+  element.classList.remove(`${styles.errorBorder}`);
 };
 
 const validateInputs = () => {
@@ -55,9 +55,6 @@ const validateInputs = () => {
   );
   const phone: HTMLInputElement | null =
     document.querySelector('[name="phone"]');
-
-  console.log("email <-------", email);
-  console.log("login <-------", login);
 
   if (!email || !login || !firstName || !secondName || !phone) {
     return;
@@ -152,16 +149,16 @@ const avatar = new Avatar("div", {
 });
 
 const changeEmail = new Input("div", {
-  classLabel: `${styles.change_lable}`,
+  classLabel: `${styles.changeLable}`,
   labelName: "Почта",
-  classInput: `${styles.change_input}`,
+  classInput: `${styles.changeInput}`,
   type: "email",
   inputName: "email",
   value: `${data.email}`,
   classLine: `${styles.lineNone}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -169,16 +166,16 @@ const changeEmail = new Input("div", {
 });
 
 const changeLogin = new Input("div", {
-  classLabel: `${styles.change_lable}`,
+  classLabel: `${styles.changeLable}`,
   labelName: "Логин",
-  classInput: `${styles.change_input}`,
+  classInput: `${styles.changeInput}`,
   type: "text",
   inputName: "login",
   value: `${data.login}`,
   classLine: `${styles.lineNone}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -186,16 +183,16 @@ const changeLogin = new Input("div", {
 });
 
 const changeFirstName = new Input("div", {
-  classLabel: `${styles.change_lable}`,
+  classLabel: `${styles.changeLable}`,
   labelName: "Имя",
-  classInput: `${styles.change_input}`,
+  classInput: `${styles.changeInput}`,
   type: "text",
   inputName: "first_name",
   value: `${data.firstName}`,
   classLine: `${styles.lineNone}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -203,16 +200,16 @@ const changeFirstName = new Input("div", {
 });
 
 const changeSecondName = new Input("div", {
-  classLabel: `${styles.change_lable}`,
+  classLabel: `${styles.changeLable}`,
   labelName: "Фамилия",
-  classInput: `${styles.change_input}`,
+  classInput: `${styles.changeInput}`,
   type: "text",
   inputName: "second_name",
   value: `${data.secondName}`,
   classLine: `${styles.lineNone}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -220,16 +217,16 @@ const changeSecondName = new Input("div", {
 });
 
 const changeChatsName = new Input("div", {
-  classLabel: `${styles.change_lable}`,
+  classLabel: `${styles.changeLable}`,
   labelName: "Имя в чате",
-  classInput: `${styles.change_input}`,
+  classInput: `${styles.changeInput}`,
   type: "text",
   inputName: "display_name",
   value: `${data.display_name}`,
   classLine: `${styles.lineNone}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -237,16 +234,16 @@ const changeChatsName = new Input("div", {
 });
 
 const changePhone = new Input("div", {
-  classLabel: `${styles.change_lable}`,
+  classLabel: `${styles.changeLable}`,
   labelName: "Телефон",
-  classInput: `${styles.change_input}`,
+  classInput: `${styles.changeInput}`,
   type: "tel",
   inputName: "phone",
   value: `${data.phone}`,
   classLine: `${styles.lineNone}`,
   classError: `${styles.error}`,
   attr: {
-    class: `${styles.input_control}`,
+    class: `${styles.inputControl}`,
   },
   events: {
     blur: inputBlur,
@@ -284,7 +281,7 @@ const changeDataPage = new ChangeData("div", {
   avatar,
   blockData,
   attr: {
-    class: `${styles.changeData_wrapper}`,
+    class: `${styles.changeDataWrapper}`,
   },
 });
 
