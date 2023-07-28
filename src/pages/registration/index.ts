@@ -22,7 +22,7 @@ const requiredKeys = [
   "repeatPassword",
 ];
 
-const setError = (element: any, message: string) => {
+const setError = (element: Record<string, any> , message: string) => {
   const inputControl = element.parentElement.parentElement;
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
@@ -30,7 +30,7 @@ const setError = (element: any, message: string) => {
   element.classList.add(`${styles.errorBorder}`);
 };
 
-const setSuccess = (element: any) => {
+const setSuccess = (element: Record<string, any>) => {
   const inputControl = element.parentElement.parentElement;
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
@@ -77,7 +77,7 @@ const validateInputs = () => {
   const passwordValue = password.value.trim();
   const passwordRepeatValue = repeatPassword.value.trim();
 
-  let data: any = {};
+  let data = {};
 
   if (emailValue === "") {
     setError(email, "Email is required");

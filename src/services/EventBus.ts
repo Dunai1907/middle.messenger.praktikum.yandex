@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 export default class EventBus {
-  private readonly listeners: Record<string, (() => void)[]>;
+  private readonly listeners: Record<string, ((...args: any[]) => void)[]>;
   constructor() {
     this.listeners = {};
   }
 
-  on(event: string, callback: () => void) {
+  on(event: string, callback: (...args: any[]) => void) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -12,7 +13,7 @@ export default class EventBus {
     this.listeners[event].push(callback);
   }
 
-  off(event: string, callback: () => void) {
+  off(event: string, callback: (...args: any[]) => void) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
@@ -27,7 +28,7 @@ export default class EventBus {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event].forEach((listener: any) => {
+    this.listeners[event].forEach((listener) => {
       listener(...args);
     });
   }

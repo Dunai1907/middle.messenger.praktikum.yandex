@@ -8,7 +8,7 @@ import styles from "./login.module.scss";
 
 const requiredKeys = ["login", "password"];
 
-const setError = (element: any, message: string) => {
+const setError = (element: Record<string, any>, message: string) => {
   const inputControl = element.parentElement.parentElement;
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
@@ -16,7 +16,7 @@ const setError = (element: any, message: string) => {
   element.classList.add(`${styles.errorBorder}`);
 };
 
-const setSuccess = (element: any) => {
+const setSuccess = (element: Record<string, any>) => {
   const inputControl = element.parentElement.parentElement;
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
@@ -37,7 +37,7 @@ const validateInputs = () => {
   const loginValue = login.value.trim();
   const passwordValue = password.value.trim();
 
-  let data: any = {};
+  let data = {};
 
   if (loginValue === "") {
     setError(login, "Login is required");

@@ -1,6 +1,6 @@
-import Handlebars from 'handlebars';
-import { v4 as uuidv4 } from 'uuid';
-import EventBus from './EventBus';
+import Handlebars from "handlebars";
+import { v4 as uuidv4 } from "uuid";
+import EventBus from "./EventBus";
 
 class Block {
   static EVENTS = {
@@ -10,15 +10,15 @@ class Block {
     FLOW_RENDER: "flow:render",
   };
 
-  _props: any;
-  _children: any;
-  _id: any;
+  _props: Record<string, any>;
+  _children: Record<string, any>;
+  _id: string;
   _element: any;
-  _meta: any = null;
-  _eventBus: any;
+  _meta;
+  _eventBus: EventBus;
   _setUpdate = false;
 
-  constructor(tagName = "div", propsAndChilds: any) {
+  constructor(tagName = "div", propsAndChilds: Record<string, any>) {
     const { children, props } = this._getChildren(propsAndChilds);
     this._eventBus = new EventBus();
     this._id = uuidv4();
@@ -78,7 +78,7 @@ class Block {
   }
 
   // Переопределяется пользователем. Необходимо вернуть разметку
-  render(): any {}
+  render() {}
 
   addEvents() {
     const { events = {} } = this._props;
@@ -104,7 +104,7 @@ class Block {
     });
   }
 
-  _getChildren(propsAndChilds: { [x: string]: any }) {
+  _getChildren(propsAndChilds: Record<string, any>) {
     const children: Record<string, any> = {};
     const props: Record<string, any> = {};
 
@@ -119,21 +119,21 @@ class Block {
     return { children, props };
   }
 
-  _compile(template: string, props: any) {
+  _compile(template: string, props: Record<string, any>) {
     if (typeof props === "undefined") {
       props = this._props;
     }
 
     const propsAndStubs = { ...props };
 
-    Object.entries(this._children).forEach(([key, child]: any) => {
+    Object.entries(this._children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id=${child._id}></div>`;
     });
 
     const fragment: any = this._createDocumentElement("template");
     fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
 
-    Object.values(this._children).forEach((child: any) => {
+    Object.values(this._children).forEach((child) => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
       if (stub) {
         stub.replaceWith(child.getContent());
@@ -145,7 +145,7 @@ class Block {
 
   _componentDidMount() {
     this.componentDidMount();
-    Object.values(this._children).forEach((child: any) => {
+    Object.values(this._children).forEach((child) => {
       child.dispatchComponentDidMount();
     });
   }
@@ -160,7 +160,10 @@ class Block {
     }
   }
 
-  _componentDidUpdate(oldProps: any, newProps: any) {
+  _componentDidUpdate(
+    oldProps: Record<string, any>,
+    newProps: Record<string, any>
+  ) {
     const isReRender = this.componentDidUpdate(oldProps, newProps);
 
     if (isReRender) {
@@ -168,13 +171,16 @@ class Block {
     }
   }
 
-  componentDidUpdate(oldProps: any, newProps: any) {
+  componentDidUpdate(
+    oldProps: Record<string, any>,
+    newProps: Record<string, any>
+  ) {
     console.log("oldProps <-------", oldProps);
     console.log("newProps <-------", newProps);
     return true;
   }
 
-  setProps(newProps: any) {
+  setProps(newProps: Record<string, any>) {
     if (!newProps) {
       return;
     }
@@ -193,29 +199,25 @@ class Block {
     }
 
     if (this._setUpdate) {
-      this._eventBus().emit(Block.EVENTS.FLOW_CDU, oldValue, this._props);
+      this._eventBus.emit(Block.EVENTS.FLOW_CDU, oldValue, this._props);
       this._setUpdate = false;
     }
   }
 
-  makePropsProxy(props: any) {
+  makePropsProxy(props: Record<string, any>) {
     const self = this;
 
     return new Proxy(props, {
-      get(target, prop) {
+      get(target: Record<string, any>, prop: string) {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
 
-      set(target, prop, value) {
+      set(target: Record<string, any>, prop: string, value) {
         if (target[prop] !== value) {
           target[prop] = value;
           self._setUpdate = true;
         }
-        // const oldValue = { ...target };
-        // target[prop] = value;
-
-        // self._eventBus().emit(Block.EVENTS.FLOW_CDU, oldValue, target);
 
         return true;
       },
