@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 import { v4 as uuidv4 } from "uuid";
 import EventBus from "./EventBus";
 
-class Block {
+class Block<T extends Record<string, any>> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -18,7 +18,7 @@ class Block {
   _eventBus: EventBus;
   _setUpdate = false;
 
-  constructor(tagName = "div", propsAndChilds: Record<string, any>) {
+  constructor(tagName = "div", propsAndChilds: T) {
     const { children, props } = this._getChildren(propsAndChilds);
     this._eventBus = new EventBus();
     this._id = uuidv4();
@@ -160,10 +160,7 @@ class Block {
     }
   }
 
-  _componentDidUpdate(
-    oldProps: Record<string, any>,
-    newProps: Record<string, any>
-  ) {
+  _componentDidUpdate(oldProps: T, newProps: T) {
     const isReRender = this.componentDidUpdate(oldProps, newProps);
 
     if (isReRender) {
@@ -171,16 +168,13 @@ class Block {
     }
   }
 
-  componentDidUpdate(
-    oldProps: Record<string, any>,
-    newProps: Record<string, any>
-  ) {
+  componentDidUpdate(oldProps: T, newProps: T) {
     console.log("oldProps <-------", oldProps);
     console.log("newProps <-------", newProps);
     return true;
   }
 
-  setProps(newProps: Record<string, any>) {
+  setProps(newProps: T) {
     if (!newProps) {
       return;
     }
@@ -204,7 +198,7 @@ class Block {
     }
   }
 
-  makePropsProxy(props: Record<string, any>) {
+  makePropsProxy(props: Record<string, any>): Record<string, any> {
     const self = this;
 
     return new Proxy(props, {

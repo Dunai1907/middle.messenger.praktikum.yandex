@@ -47,7 +47,7 @@ const validateInputs = () => {
   const newPasswordValue = newPassword.value.trim();
   const repeatNewPasswordValue = repeatNewPassword.value.trim();
 
-  let data = {};
+  let data: Record<string, string> = {};
 
   if (oldPasswordValue === "") {
     setError(oldPassword, "OldPassword is required");
@@ -87,6 +87,11 @@ const changePasswordForm = (event: SubmitEvent) => {
   event.preventDefault();
   validateInputs();
   const data = validateInputs();
+
+  if (!data) {
+    return;
+  }
+
   console.log("data <-------", data);
   const checkData: boolean = checkKeys(data, requiredKeys);
   if (!checkData) {

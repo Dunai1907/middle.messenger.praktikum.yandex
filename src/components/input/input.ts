@@ -1,7 +1,20 @@
 import tpl from "./input.tmpl";
 import Block from "../../services/Block";
 
-export default class Input extends Block {
+type InputProps = {
+  classLabel: string;
+  labelName: string;
+  type: string;
+  inputName: string;
+  classInput: string;
+  value?: string;
+  classLine?: string;
+  classError?: string;
+  attr: Record<string, string>;
+  events?: {};
+};
+
+export default class Input extends Block<InputProps> {
   render() {
     return this._compile(tpl, this._props);
   }

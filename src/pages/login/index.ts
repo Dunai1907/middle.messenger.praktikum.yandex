@@ -37,7 +37,7 @@ const validateInputs = () => {
   const loginValue = login.value.trim();
   const passwordValue = password.value.trim();
 
-  let data = {};
+  let data: Record<string, string> = {};
 
   if (loginValue === "") {
     setError(login, "Login is required");
@@ -68,6 +68,11 @@ const loginForm = (event: SubmitEvent) => {
   event.preventDefault();
   validateInputs();
   const data = validateInputs();
+
+  if (!data) {
+    return;
+  }
+
   console.log("data <-------", data);
   const checkData: boolean = checkKeys(data, requiredKeys);
   if (!checkData) {

@@ -22,7 +22,7 @@ const requiredKeys = [
   "repeatPassword",
 ];
 
-const setError = (element: Record<string, any> , message: string) => {
+const setError = (element: Record<string, any>, message: string) => {
   const inputControl = element.parentElement.parentElement;
   const errorDisplay = inputControl.querySelector('[data-name="error"]');
 
@@ -77,7 +77,7 @@ const validateInputs = () => {
   const passwordValue = password.value.trim();
   const passwordRepeatValue = repeatPassword.value.trim();
 
-  let data = {};
+  let data: Record<string, string> = {};
 
   if (emailValue === "") {
     setError(email, "Email is required");
@@ -153,6 +153,11 @@ const registrationForm = (event: SubmitEvent) => {
   event.preventDefault();
   validateInputs();
   const data = validateInputs();
+
+  if (!data) {
+    return;
+  }
+
   console.log("data <-------", data);
   const checkData: boolean = checkKeys(data, requiredKeys);
   if (!checkData) {

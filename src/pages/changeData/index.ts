@@ -66,7 +66,7 @@ const validateInputs = () => {
   const secondNameValue = secondName.value.trim();
   const phoneValue = phone.value.trim();
 
-  let data = {};
+  let data: Record<string, string> = {};
 
   if (emailValue === "") {
     setError(email, "Email is required");
@@ -124,6 +124,11 @@ const changeDataForm = (event: SubmitEvent) => {
   event.preventDefault();
   validateInputs();
   const data = validateInputs();
+
+  if (!data) {
+    return;
+  }
+
   console.log("data <-------", data);
   const checkData: boolean = checkKeys(data, requiredKeys);
   if (!checkData) {
