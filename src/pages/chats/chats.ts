@@ -1,18 +1,19 @@
-import styles from "./chats.module.scss";
-import arrChat from "./modules/chat/chat";
-import listChats from "./modules/listChats/listChats";
-import userChat from "./modules/userChat/userChat";
+import tpl from "./chats.tmpl";
+import Block from "../../services/Block";
+import ModalWindow from "./components/modalWindow/modalWindow";
+import ListChats from "./modules/listChats/listChats";
+import UserChat from "./modules/userChat/userChat";
 
-const chats = document.createElement("section");
-chats.classList.add(styles.chats_wrapper);
-chats.append(listChats);
+type ChatsProps = {
+  modalWindowAdd: ModalWindow;
+  modalWindowDelete: ModalWindow;
+  listChats: ListChats;
+  userChat: UserChat;
+  attr: Record<string, string>;
+};
 
-const form = chats.querySelector("#search");
-
-arrChat.reverse().forEach((item) => {
-  form?.insertAdjacentHTML("afterend", `${item}`);
-});
-
-chats.append(userChat);
-
-export default chats;
+export default class Chats extends Block<ChatsProps> {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

@@ -1,17 +1,20 @@
-import styles from "./500.module.scss";
+import tpl from "./500.tmpl";
+import Block from "../../services/Block";
 
-const serverError = document.createElement("div");
-serverError.classList.add(styles.notFound_wrapper);
-serverError.innerHTML = `
-<div class=${styles.text1}>
-  <span class=${styles.span_text1}>500</span>
-</div>
-<div class=${styles.text2}>
-  <span class=${styles.span_text2}>Мы уже фиксим</span>
-</div>
-<div >
-  <a href="/" class=${styles.a_text3}>Назад к чатам</a>
-</div>
-`;
+type ServerErrorProps = {
+  classError: string;
+  classSpanError: string;
+  error: string;
+  classDescription: string;
+  classSpanDescription: string;
+  description: string;
+  classBack: string;
+  back: string;
+  attr: Record<string, string>;
+};
 
-export default serverError;
+export default class ServerError extends Block<ServerErrorProps> {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

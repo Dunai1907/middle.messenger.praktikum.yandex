@@ -1,18 +1,39 @@
-import profileSVG from "../../../../../static/decor/profile.svg";
-import searchSVG from "../../../../../static/decor/search.svg";
-import styles from "./listChats.module.scss";
+import tpl from "./listChats.tmpl";
+import Block from "../../../../services/Block";
 
-const listChats = document.createElement("aside");
-listChats.classList.add(styles.list_chats);
-listChats.innerHTML = `
-<a href="/profile" class=${styles.buttonProfile}>
-  <img src=${profileSVG}>
-</a>
-<form id="search"
-  class=${styles.form}
->
-  <img src=${searchSVG}>
-  <input placeholder="поиск" class=${styles.search} type="search"/>
-</form>`;
+type ChatProp = {
+  stylesChat: string;
+  stylesAvatar: string;
+  avatar: string;
+  stylesMain: string;
+  stylesWrap: string;
+  stylesName: string;
+  stylesSpanName: string;
+  name: string;
+  stylesDate: string;
+  stylesSpanDate: string;
+  date: string;
+  stylesText: string;
+  stylesSpanText: string;
+  text: string;
+  stylesNumber: string;
+  stylesSpanNumber: string;
+  number: string;
+};
 
-export default listChats;
+type ListChatsProps = {
+  hrefValue: string;
+  stylesButtonProfile: string;
+  profileSVG: string;
+  stylesForm: string;
+  searchSVG: string;
+  stylesSearch: string;
+  items: ChatProp[];
+  attr: Record<string, string>;
+};
+
+export default class ListChats extends Block<ListChatsProps> {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

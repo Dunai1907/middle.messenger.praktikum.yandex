@@ -1,35 +1,14 @@
-import Handlebars from "handlebars";
-import styles from "./button.module.scss";
-import button from "./button.tmpl";
+import tpl from "./button.tmpl";
+import Block from "../../services/Block";
 
-const template = Handlebars.compile(button);
-const buttonBigLogin = template({
-  classButton: `${styles.buttonBig}`,
-  classSpan: `${styles.buttonBig_text}`,
-  name: "Вход",
-});
-
-const buttonSmallLogin = template({
-  classButton: `${styles.buttonSmall}`,
-  classSpan: `${styles.buttonSmall_text}`,
-  name: "Авторизоваться",
-});
-
-const buttonBigRegistration = template({
-  classButton: `${styles.buttonBig}`,
-  classSpan: `${styles.buttonBig_text}`,
-  name: "Регистрация",
-});
-
-const buttonSmallRegistration = template({
-  classButton: `${styles.buttonSmall}`,
-  classSpan: `${styles.buttonSmall_text}`,
-  name: "Зарегистрироваться",
-});
-
-export {
-  buttonBigLogin,
-  buttonSmallLogin,
-  buttonBigRegistration,
-  buttonSmallRegistration,
+type ButtonProps = {
+  classSpan?: string;
+  name: string;
+  attr: Record<string, string>;
 };
+
+export default class Button extends Block<ButtonProps> {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

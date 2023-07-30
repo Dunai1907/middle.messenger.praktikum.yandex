@@ -1,10 +1,22 @@
-import styles from "./userChat.module.scss";
+import tpl from "./userChat.tmpl";
+import Block from "../../../../services/Block";
+import UserData from "./userData/userData";
+import WindowActions from "../../components/windowActions/windowActions";
+import ListMessages from "./listMessages/listMessages";
+import CreateMessage from "./createMessage/createMessage";
 
-const userChat = document.createElement("section");
-userChat.classList.add(styles.user_chat);
-userChat.innerHTML = `
-<div class=${styles.select_chat}>
-  <span class=${styles.span_select_chat}>Выберите чат чтобы отправить сообщение</span>
-<div/>`;
+type UserChatProps = {
+  userData: UserData;
+  blockActions: WindowActions;
+  stylesLine: string;
+  listMessages: ListMessages;
+  blockUpload: WindowActions;
+  createMessage: CreateMessage;
+  attr: Record<string, string>;
+};
 
-export default userChat;
+export default class UserChat extends Block<UserChatProps> {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

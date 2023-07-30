@@ -26,7 +26,8 @@ These port is in use:
 
 - user registration: (http://localhost:3000/registration).
 - user login: (http://localhost:3000/login).
+- messanger: (http://localhost:3000).
 - user profile: (http://localhost:3000/profile).
-- change data user: (http://localhost:3000/changeData).
-- change password: (http://localhost:3000/changePassword).
+- change data user: (http://localhost:3000/change-data).
+- change password: (http://localhost:3000/change-password).
 - 404: (http://localhost:3000/other).

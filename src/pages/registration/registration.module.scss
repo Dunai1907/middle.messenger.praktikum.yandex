@@ -1,4 +1,4 @@
-.regisration_wrapper {
+.regisrationWrapper {
   display: flex;
   min-height: 100vh;
   align-items: center;
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.form_block {
+.formBlock {
   display: flex;
   width: 340px;
   height: 615px;
@@ -14,11 +14,11 @@
   align-items: center;
   justify-content: center;
   padding: 15px;
-  border: 2px solid #929292;
+  border: 2px solid rgba(153, 153, 153, 1);
   border-radius: 12px;
 
   &:hover {
-    border-color: #0d99ff;
+    border-color: rgba(13, 153, 255, 1);
   }
 }
 
@@ -29,26 +29,102 @@
   justify-content: center;
 }
 
-.login {
-  width: auto;
-  margin-top: 20px;
-  font-family: Inter;
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 11px;
-  text-decoration: none;
-  color: rgba(51, 105, 243, 1);
-
-  &:hover {
-    text-decoration: 2px underline #0d99ff;
-  }
-}
-
 .line {
   width: 280px;
   border: 1px solid rgba(51, 105, 243, 1);
 
   &:hover {
-    border: 1px solid #0d99ff;
+    border: 1px solid rgba(13, 153, 255, 1);
   }
+}
+
+.input {
+  width: 100%;
+  border: 0;
+  padding: 5px 0;
+  margin-bottom: 2px;
+  background-color: rgba(255, 255, 255, 1);
+
+  &:focus {
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+}
+
+.textLabel {
+  margin-top: 20px;
+  width: 280px;
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 9px;
+  color: rgba(153, 153, 153, 1);
+
+  &:hover {
+    text-decoration: underline 2px rgba(13, 153, 255, 1);
+  }
+}
+
+.buttonBig {
+  width: auto;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.buttonSmall {
+  width: 280px;
+  height: 37px;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: rgba(51, 105, 243, 1);
+
+  &:hover {
+    border: 1px solid rgba(13, 153, 255, 1);
+  }
+}
+
+.buttonBigText {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+
+  &:hover {
+    text-decoration: underline rgba(51, 105, 243, 1);
+  }
+}
+
+.buttonSmallText {
+  font-size: 13px;
+  line-height: 13px;
+  color: rgba(255, 255, 255, 1);
+
+  &:hover {
+    text-decoration: 2px underline rgba(13, 153, 255, 1);
+  }
+}
+
+.error {
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 8px;
+  text-align: left;
+  color: rgba(255, 47, 47, 1);
+}
+
+.errorBorder {
+  border-radius: 5px;
+  border: 2px solid rgba(255, 47, 47, 1);
+}
+
+.inputControl {
+  display: flex;
+  flex-direction: column;
 }

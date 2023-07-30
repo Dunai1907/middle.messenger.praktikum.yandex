@@ -1,28 +1,17 @@
-import styles from "./login.module.scss";
-import { inputLogin, inputPassword } from "../../components/input/input";
-import {
-  buttonBigLogin,
-  buttonSmallLogin,
-} from "../../components/button/button";
+import tpl from "./login.tmpl";
+import Block from "../../services/Block";
+import Form from "../../components/form/form";
 
-const login = document.createElement("section");
-login.classList.add(styles.login_wrapper);
+type LoginProps = {
+  className: string;
+  form: Form;
+  url: string;
+  title: string;
+  attr: Record<string, string>;
+};
 
-login.innerHTML = `
-  <div class=${styles.form_block}>
-    <form
-      class=${styles.form}
-    >
-      ${buttonBigLogin}
-      ${inputLogin}
-      <hr class=${styles.line} />
-      ${inputPassword}
-      <hr class=${styles.line} />
-      ${buttonSmallLogin}
-    </form>
-    <a class=${styles.unregistered} href="/registration">
-    Нет аккаунта?
-    </a>
-  </div>`;
-
-export default login;
+export default class Login extends Block<LoginProps> {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

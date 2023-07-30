@@ -1,4 +1,4 @@
-.notFound_wrapper {
+.notFoundWrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -6,52 +6,49 @@
   justify-content: center;
 }
 
-.text1 {
+.error {
   height: 40px;
   margin-bottom: 20px;
 }
 
-.span_text1 {
-  font-family: Inter;
+.spanError {
+  font-family: "Inter", sans-serif;
   font-size: 40px;
   font-weight: 500;
   line-height: 40px;
-  letter-spacing: 0em;
   text-align: center;
 
   &:hover {
-    text-decoration: 2px underline #0d99ff;
+    text-decoration: 2px underline rgba(13, 153, 255, 1);
   }
 }
 
-.text2 {
+.description {
   margin-bottom: 69px;
 }
 
-.span_text2 {
-  font-family: Inter;
+.spanDescription {
+  font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 20px;
-  letter-spacing: 0em;
   text-align: center;
 
   &:hover {
-    text-decoration: 2px underline #0d99ff;
+    text-decoration: 2px underline rgba(13, 153, 255, 1);
   }
 }
 
-.a_text3 {
-  font-family: Inter;
+.back {
+  font-family: "Inter", sans-serif;
   font-size: 11px;
   font-weight: 500;
   line-height: 11px;
-  letter-spacing: 0em;
   text-align: center;
-  color: #3369f3;
+  color: rgba(51, 105, 243, 1);
   text-decoration: none;
 
   &:hover {
-    text-decoration: 2px underline #0d99ff;
+    text-decoration: 2px underline rgba(13, 153, 255, 1);
   }
 }

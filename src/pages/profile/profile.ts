@@ -1,35 +1,23 @@
-import avatar from "../../components/avatar/avatar";
-import groupSVG from "../../../static/decor/group.svg";
-import styles from "./profile.module.scss";
-import blockData from "./modules/blockData/blockData";
-import blockAction from "./modules/blockAction/blockAction";
+import tpl from "./profile.tmpl";
+import Block from "../../services/Block";
+import GoBack from "../../components/goBack/goBack";
+import Avatar from "../../components/avatar/avatar";
+import BlockData from "./modules/blockData/blockData";
+import BlockAction from "./modules/blockAction/blockAction";
 
-const name = "Иван";
+type ProfileProps = {
+  goBack: GoBack;
+  classData: string;
+  avatar: Avatar;
+  className: string;
+  name: string;
+  blockData: BlockData;
+  blockAction: BlockAction;
+  attr: Record<string, string>;
+};
 
-const profile = document.createElement("div");
-profile.classList.add(styles.profile_wrapper);
-
-profile.innerHTML = `
-<aside class=${styles.back}>
-  <a href="/"}>
-    <img src=${groupSVG}>
-  </a>
-</aside>
-<section id="profile" class=${styles.data}>
-</section>
-`;
-
-const section = profile.querySelector("#profile");
-
-section?.insertAdjacentHTML("afterbegin", avatar);
-
-section?.insertAdjacentHTML(
-  "beforeend",
-  `<div class=${styles.name}>${name}</div>`
-);
-
-section?.insertAdjacentElement("beforeend", blockData);
-
-section?.insertAdjacentElement("beforeend", blockAction);
-
-export default profile;
+export default class Profile extends Block<ProfileProps> {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

@@ -1,7 +1,14 @@
-import styles from "./avatar.module.scss";
-import unionSVG from "../../../static/decor/union.svg";
+import tpl from "./avatar.tmpl";
+import Block from "../../services/Block";
+type AvatarProps = {
+  unionSVG: string;
+  width?: string;
+  height?: string;
+  attr?: {};
+};
 
-export default `
-<div class=${styles.avatar_wrapper}>
-  <img src=${unionSVG}>
-</div>`;
+export default class Avatar extends Block<AvatarProps> {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}
