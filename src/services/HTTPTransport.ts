@@ -11,9 +11,15 @@ type Options = {
   headers?: Record<string, string>;
   method: METHOD;
   data?: any;
+  timeout?: number;
 };
 
 type OptionsWithoutMethod = Omit<Options, "method">;
+
+type HTTPMethod = (
+  url: string,
+  options: OptionsWithoutMethod
+) => Promise<XMLHttpRequest>;
 
 function queryStringify(data: Record<string, any>) {
   if (typeof data !== "object") {
@@ -27,37 +33,42 @@ function queryStringify(data: Record<string, any>) {
 }
 
 class HTTPTransport {
-  get(
-    url: string,
-    options: OptionsWithoutMethod = {}
-  ): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHOD.GET });
-  }
+  get: HTTPMethod = (url, options = {}) => {
+    return this.request(
+      url,
+      { ...options, method: METHOD.GET },
+      options.timeout
+    );
+  };
 
-  post(
-    url: string,
-    options: OptionsWithoutMethod = {}
-  ): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHOD.POST });
-  }
+  post: HTTPMethod = (url, options = {}) => {
+    return this.request(
+      url,
+      { ...options, method: METHOD.POST },
+      options.timeout
+    );
+  };
 
-  put(
-    url: string,
-    options: OptionsWithoutMethod = {}
-  ): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHOD.POST });
-  }
+  put: HTTPMethod = (url, options = {}) => {
+    return this.request(
+      url,
+      { ...options, method: METHOD.POST },
+      options.timeout
+    );
+  };
 
-  delete(
-    url: string,
-    options: OptionsWithoutMethod = {}
-  ): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHOD.POST });
-  }
+  delete: HTTPMethod = (url, options = {}) => {
+    return this.request(
+      url,
+      { ...options, method: METHOD.POST },
+      options.timeout
+    );
+  };
 
   request(
     url: string,
-    options: Options = { method: METHOD.GET }
+    options: Options = { method: METHOD.GET },
+    timeout = 5000
   ): Promise<XMLHttpRequest> {
     const { headers = {}, method, data } = options;
 
@@ -82,6 +93,8 @@ class HTTPTransport {
 
       xhr.onabort = reject;
       xhr.onerror = reject;
+
+      xhr.timeout = timeout;
       xhr.ontimeout = reject;
 
       if (isGet || !data) {

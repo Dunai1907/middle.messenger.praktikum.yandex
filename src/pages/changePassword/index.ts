@@ -52,7 +52,10 @@ const validateInputs = () => {
   if (oldPasswordValue === "") {
     setError(oldPassword, "OldPassword is required");
   } else if (!isValidPassword(oldPasswordValue)) {
-    setError(oldPassword, "Validation error");
+    setError(
+      oldPassword,
+      "от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра"
+    );
   } else {
     setSuccess(oldPassword);
     data = Object.assign(data, { oldPassword: oldPasswordValue });
@@ -61,7 +64,10 @@ const validateInputs = () => {
   if (newPasswordValue === "") {
     setError(newPassword, "NewPassword is required");
   } else if (!isValidPassword(newPasswordValue)) {
-    setError(newPassword, "Validation error");
+    setError(
+      newPassword,
+      "от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра"
+    );
   } else {
     setSuccess(newPassword);
     data = Object.assign(data, { newPassword: newPasswordValue });

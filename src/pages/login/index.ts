@@ -42,7 +42,11 @@ const validateInputs = () => {
   if (loginValue === "") {
     setError(login, "Login is required");
   } else if (!isValidLogin(loginValue)) {
-    setError(login, "Validation error");
+    setError(
+      login,
+      "от 3 до 20 символов, латиница, может содержать цифры, \
+    (допустимы дефис и нижнее подчёркивание)"
+    );
   } else {
     setSuccess(login);
     data = Object.assign(data, { login: loginValue });
@@ -51,7 +55,10 @@ const validateInputs = () => {
   if (passwordValue === "") {
     setError(password, "Password is required");
   } else if (!isValidPassword(passwordValue)) {
-    setError(password, "Validation error");
+    setError(
+      password,
+      "от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра"
+    );
   } else {
     setSuccess(password);
     data = Object.assign(data, { password: passwordValue });

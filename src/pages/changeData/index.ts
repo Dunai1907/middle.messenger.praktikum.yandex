@@ -71,7 +71,11 @@ const validateInputs = () => {
   if (emailValue === "") {
     setError(email, "Email is required");
   } else if (!isValidEmail(emailValue)) {
-    setError(email, "Validation error");
+    setError(
+      email,
+      "латиница, может включать цифры и спецсимволы,\
+     обязательно должна быть @ и точка после неё."
+    );
   } else {
     setSuccess(email);
     data = Object.assign(data, { email: emailValue });
@@ -80,7 +84,11 @@ const validateInputs = () => {
   if (loginValue === "") {
     setError(login, "Login is required");
   } else if (!isValidLogin(loginValue)) {
-    setError(login, "Validation error");
+    setError(
+      login,
+      "от 3 до 20 символов, латиница, может содержать цифры, \
+    (допустимы дефис и нижнее подчёркивание)"
+    );
   } else {
     setSuccess(login);
     data = Object.assign(data, { login: loginValue });
@@ -89,7 +97,11 @@ const validateInputs = () => {
   if (firstNameValue === "") {
     setError(firstName, "It's required");
   } else if (!isValidName(firstNameValue)) {
-    setError(firstName, "Validation error");
+    setError(
+      firstName,
+      "Латиница или кириллица, первая буква должна быть заглавной,\
+    без пробелов и без цифр, нет спецсимволов (допустим только дефис)"
+    );
   } else {
     setSuccess(firstName);
     data = Object.assign(data, { firstName: firstNameValue });
@@ -98,7 +110,11 @@ const validateInputs = () => {
   if (secondNameValue === "") {
     setError(secondName, "It's required");
   } else if (!isValidName(secondNameValue)) {
-    setError(secondName, "Validation error");
+    setError(
+      secondName,
+      "Латиница или кириллица, первая буква должна быть заглавной,\
+    без пробелов и без цифр, нет спецсимволов (допустим только дефис)"
+    );
   } else {
     setSuccess(secondName);
     data = Object.assign(data, { secondName: secondNameValue });
@@ -107,7 +123,10 @@ const validateInputs = () => {
   if (phoneValue === "") {
     setError(phone, "Phone required");
   } else if (!isValidPhone(phoneValue)) {
-    setError(phone, "Validation error");
+    setError(
+      phone,
+      "от 10 до 15 символов, состоит из цифр, может начинается с плюса."
+    );
   } else {
     setSuccess(phone);
     data = Object.assign(data, { phone: phoneValue });

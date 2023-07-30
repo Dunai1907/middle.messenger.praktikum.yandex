@@ -1,3 +1,14 @@
+$blue: rgba(13, 153, 255, 1);
+$purple: rgba(51, 105, 243, 1);
+$lightGrey: rgba(251, 251, 251, 1);
+$darkGrey: rgba(239, 239, 239, 1);
+$grey: rgba(234, 234, 234, 1);
+$dirtyGrey: rgba(153, 153, 153, 1);
+$white: rgba(255, 255, 255, 1);
+$black: rgba(30, 30, 30, 1);
+$dirtyWhite: rgba(248, 248, 248, 1);
+$transparentBlack: rgba(0, 0, 0, 0.4);
+
 .chatsWrapper {
   display: flex;
   min-height: 100vh;
@@ -7,7 +18,7 @@
   display: flex;
   flex-direction: column;
   width: 310px;
-  background-color: rgba(251, 251, 251, 1);
+  background-color: $lightGrey;
 }
 
 .buttonProfile {
@@ -20,7 +31,7 @@
   border: 2px solid transparent;
 
   &:hover {
-    border-color: rgba(13, 153, 255, 1);
+    border-color: $blue;
   }
 }
 
@@ -30,10 +41,10 @@
   margin: 20px 10px;
   border: 2px solid transparent;
   border-radius: 5px;
-  background-color: rgba(239, 239, 239, 1);
+  background-color: $darkGrey;
 
   &:hover {
-    border: 2px solid rgba(13, 153, 255, 1);
+    border: 2px solid $blue;
   }
 }
 
@@ -42,7 +53,7 @@
   margin: 10px 0;
   border: none;
   outline: none;
-  background-color: rgba(239, 239, 239, 1);
+  background-color: $darkGrey;
 }
 
 .chat {
@@ -59,10 +70,10 @@
   height: 47px;
   border-radius: 50%;
   border: 2px solid transparent;
-  background-color: rgba(239, 239, 239, 1);
+  background-color: $darkGrey;
 
   &:hover {
-    border: 2px solid rgba(13, 153, 255, 1);
+    border: 2px solid $blue;
   }
 }
 
@@ -94,7 +105,7 @@
   text-align: left;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -112,10 +123,10 @@
   line-height: 13px;
   text-align: right;
   margin-left: auto;
-  color: rgba(153, 153, 153, 1);
+  color: $dirtyGrey;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -133,10 +144,10 @@
   line-height: 15px;
   text-align: left;
   text-overflow: ellipsis;
-  color: rgba(153, 153, 153, 1);
+  color: $dirtyGrey;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -147,7 +158,7 @@
   border-radius: 10px;
   align-self: center;
   align-items: center;
-  background-color: rgba(51, 105, 243, 1);
+  background-color: $purple;
 }
 
 .spanNumber {
@@ -157,10 +168,10 @@
   font-weight: 500;
   line-height: 12px;
   text-align: center;
-  color: rgba(255, 255, 255, 1);
+  color: $white;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -187,10 +198,10 @@
   height: 34px;
   border-radius: 50%;
   border: 2px solid transparent;
-  background-color: rgba(239, 239, 239, 1);
+  background-color: $darkGrey;
 
   &:hover {
-    border: 2px solid rgba(13, 153, 255, 1);
+    border: 2px solid $blue;
   }
 }
 
@@ -222,10 +233,10 @@
   font-weight: 500;
   line-height: 12px;
   text-align: center;
-  color: rgba(153, 153, 153, 1);
+  color: $dirtyGrey;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -234,7 +245,7 @@
   width: fit-content;
   margin: 5px 0;
   padding: 11px;
-  background-color: rgba(248, 248, 248, 1);
+  background-color: $dirtyWhite;
   border-radius: 12px;
 }
 
@@ -244,7 +255,7 @@
   width: fit-content;
   margin: 5px 0;
   padding: 11px;
-  background-color: rgba(248, 248, 248, 1);
+  background-color: $dirtyWhite;
   border-radius: 12px;
 }
 
@@ -254,10 +265,10 @@
   font-weight: 500;
   line-height: 15px;
   text-align: left;
-  color: rgba(30, 30, 30, 1);
+  color: $black;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -273,10 +284,10 @@
   font-weight: 500;
   line-height: 9px;
   text-align: right;
-  color: rgba(153, 153, 153, 1);
+  color: $dirtyGrey;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -287,10 +298,10 @@
   font-weight: 500;
   line-height: 9px;
   text-align: right;
-  color: rgba(51, 105, 243, 1);
+  color: $purple;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -314,7 +325,7 @@
   width: 100%;
   height: 32px;
   border-radius: 30px;
-  background-color: rgba(248, 248, 248, 1);
+  background-color: $dirtyWhite;
   border: none;
 
   &::placeholder {
@@ -324,7 +335,7 @@
     font-weight: 500;
     line-height: 12px;
     text-align: left;
-    color: rgba(153, 153, 153, 1);
+    color: $dirtyGrey;
   }
 }
 
@@ -338,10 +349,10 @@
 .line {
   width: auto;
   margin: 0 10px 10px 10px;
-  border: solid 1px rgba(239, 239, 239, 1);
+  border: solid 1px $grey;
 
   &:hover {
-    border: 1px solid rgba(13, 153, 255, 1);
+    border: 1px solid $blue;
   }
 }
 
@@ -349,10 +360,10 @@
   display: none;
   width: fit-content;
   border-radius: 12px;
-  border: 2px solid rgba(153, 153, 153, 1);
+  border: 2px solid $dirtyGrey;
 
   &:hover {
-    border: 2px solid rgba(13, 153, 255, 1);
+    border: 2px solid $blue;
   }
 }
 
@@ -376,7 +387,7 @@
   margin: 15px;
   gap: 10px;
   align-items: center;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: $white;
 }
 
 .wrapperImage {
@@ -385,12 +396,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(51, 105, 243, 1);
+  color: $purple;
   border-radius: 50%;
-  border: 2px solid rgba(51, 105, 243, 1);
+  border: 2px solid $purple;
 
   &:hover {
-    border: 2px solid rgba(13, 153, 255, 1);
+    border: 2px solid $blue;
   }
 }
 
@@ -401,10 +412,10 @@
   font-weight: 500;
   line-height: 14px;
   text-align: left;
-  color: rgba(30, 30, 30, 1);
+  color: $black;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -420,7 +431,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: $transparentBlack;
   opacity: 40%;
 }
 
@@ -432,7 +443,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: $transparentBlack;
 }
 
 .modalContent {
@@ -440,7 +451,7 @@
   padding: 20px;
   width: 340px;
   height: 257px;
-  background: rgba(255, 255, 255, 1);
+  background: $white;
 }
 
 .spanModalWindow {
@@ -451,7 +462,7 @@
   font-weight: 500;
   line-height: 20px;
   text-align: center;
-  color: rgba(30, 30, 30, 1);
+  color: $black;
 }
 
 .inputModalWindow {
@@ -459,10 +470,10 @@
   border: 0;
   padding: 5px 0;
   margin-bottom: 2px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: $white;
 
   &:focus {
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid $white;
   }
 }
 
@@ -474,10 +485,10 @@
   font-size: 9px;
   font-weight: 500;
   line-height: 9px;
-  color: rgba(153, 153, 153, 1);
+  color: $dirtyGrey;
 
   &:hover {
-    text-decoration: underline 2px rgba(13, 153, 255, 1);
+    text-decoration: underline 2px $blue;
   }
 }
 
@@ -489,19 +500,19 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background-color: rgba(51, 105, 243, 1);
+  background-color: $purple;
 
   &:hover {
-    border: 1px solid rgba(13, 153, 255, 1);
+    border: 1px solid $blue;
   }
 }
 
 .buttonText {
   font-size: 13px;
   line-height: 13px;
-  color: rgba(255, 255, 255, 1);
+  color: $white;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
