@@ -14,6 +14,10 @@ import {
   isValidPhone,
 } from "../../utils/validation";
 import GoBack from "../../components/goBack/goBack";
+import UsersController from "../../controllers/users";
+import { ChangeUserProfileFormModel } from "../../types/file";
+
+const usersController = new UsersController();
 
 const data = {
   email: "pochta@yandex.ru",
@@ -24,7 +28,14 @@ const data = {
   phone: "+375295872088",
 };
 
-const requiredKeys = ["email", "login", "firstName", "secondName", "phone"];
+const requiredKeys = [
+  "email",
+  "login",
+  "first_name",
+  "second_name",
+  "display_name",
+  "phone",
+];
 
 const setError = (element: Record<string, any>, message: string) => {
   const inputControl = element.parentElement.parentElement;
@@ -53,10 +64,13 @@ const validateInputs = () => {
   const secondName: HTMLInputElement | null = document.querySelector(
     '[name="second_name"]'
   );
+  const displayName: HTMLInputElement | null = document.querySelector(
+    '[name="display_name"]'
+  );
   const phone: HTMLInputElement | null =
     document.querySelector('[name="phone"]');
 
-  if (!email || !login || !firstName || !secondName || !phone) {
+  if (!email || !login || !firstName || !secondName || !displayName || !phone) {
     return;
   }
 
@@ -64,6 +78,7 @@ const validateInputs = () => {
   const loginValue = login.value.trim();
   const firstNameValue = firstName.value.trim();
   const secondNameValue = secondName.value.trim();
+  const displayNameValue = displayName.value.trim();
   const phoneValue = phone.value.trim();
 
   let data: Record<string, string> = {};
@@ -104,7 +119,7 @@ const validateInputs = () => {
     );
   } else {
     setSuccess(firstName);
-    data = Object.assign(data, { firstName: firstNameValue });
+    data = Object.assign(data, { first_name: firstNameValue });
   }
 
   if (secondNameValue === "") {
@@ -117,7 +132,20 @@ const validateInputs = () => {
     );
   } else {
     setSuccess(secondName);
-    data = Object.assign(data, { secondName: secondNameValue });
+    data = Object.assign(data, { second_name: secondNameValue });
+  }
+
+  if (displayNameValue === "") {
+    setError(displayName, "It's required");
+  } else if (!isValidName(displayNameValue)) {
+    setError(
+      displayName,
+      "Латиница или кириллица, первая буква должна быть заглавной,\
+    без пробелов и без цифр, нет спецсимволов (допустим только дефис)"
+    );
+  } else {
+    setSuccess(displayName);
+    data = Object.assign(data, { display_name: displayNameValue });
   }
 
   if (phoneValue === "") {
@@ -152,13 +180,14 @@ const changeDataForm = (event: SubmitEvent) => {
   const checkData: boolean = checkKeys(data, requiredKeys);
   if (!checkData) {
     console.log("need validate <-------");
-  } else {
-    console.log("good <-------");
+    return;
   }
+
+  usersController.changeUserProfile(data as ChangeUserProfileFormModel);
 };
 
 const goBack = new GoBack("aside", {
-  url: "/",
+  url: "/settings",
   arrowLeftSVG: `${arrowLeftSVG}`,
   attr: {
     class: `${styles.back}`,

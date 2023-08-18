@@ -516,3 +516,21 @@ $transparentBlack: rgba(0, 0, 0, 0.4);
     text-decoration: 2px underline $blue;
   }
 }
+
+.buttonCreateChat {
+  display: flex;
+  margin-top: 21px;
+  margin-right: 10px;
+  margin-left: auto;
+  width: auto;
+  height: auto;
+  border: 2px solid transparent;
+
+  &:hover {
+    border-color: $blue;
+  }
+}
+
+.createChatText {
+  color: $dirtyGrey;
+}

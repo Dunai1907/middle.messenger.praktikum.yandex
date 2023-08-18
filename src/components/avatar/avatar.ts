@@ -4,7 +4,8 @@ type AvatarProps = {
   unionSVG: string;
   width?: string;
   height?: string;
-  attr?: {};
+  attr: Record<string, string>;
+  events?: {};
 };
 
 export default class Avatar extends Block<AvatarProps> {

@@ -11,6 +11,8 @@ import {
 } from "../../utils/validation";
 import checkKeys from "../../utils/checkKeys";
 import styles from "./registration.module.scss";
+import AuthController from "../../controllers/auth";
+import { RegistrationFormModel } from "../../types/file";
 
 const requiredKeys = [
   "email",
@@ -19,8 +21,10 @@ const requiredKeys = [
   "secondName",
   "phone",
   "password",
-  "repeatPassword",
+  // "repeatPassword",
 ];
+
+const authController = new AuthController();
 
 const setError = (element: Record<string, any>, message: string) => {
   const inputControl = element.parentElement.parentElement;
@@ -115,7 +119,7 @@ const validateInputs = () => {
     );
   } else {
     setSuccess(firstName);
-    data = Object.assign(data, { firstName: firstNameValue });
+    data = Object.assign(data, { first_name: firstNameValue });
   }
 
   if (secondNameValue === "") {
@@ -128,7 +132,7 @@ const validateInputs = () => {
     );
   } else {
     setSuccess(secondName);
-    data = Object.assign(data, { secondName: secondNameValue });
+    data = Object.assign(data, { second_name: secondNameValue });
   }
 
   if (phoneValue === "") {
@@ -161,7 +165,7 @@ const validateInputs = () => {
     setError(repeatPassword, "Пароли не совпадают");
   } else {
     setSuccess(repeatPassword);
-    data = Object.assign(data, { repeatPassword: passwordRepeatValue });
+    // data = Object.assign(data, { repeatPassword: passwordRepeatValue });
   }
 
   return data;
@@ -171,7 +175,7 @@ const inputBlur = () => {
   validateInputs();
 };
 
-const registrationForm = (event: SubmitEvent) => {
+const registrationForm = async (event: SubmitEvent) => {
   event.preventDefault();
   validateInputs();
   const data = validateInputs();
@@ -184,9 +188,8 @@ const registrationForm = (event: SubmitEvent) => {
   const checkData: boolean = checkKeys(data, requiredKeys);
   if (!checkData) {
     console.log("need validate <-------");
-  } else {
-    console.log("good <-------");
   }
+  await authController.registration(data as RegistrationFormModel);
 };
 
 const buttonBig = new Button("button", {
@@ -340,7 +343,7 @@ const form = new Form("form", {
 const registrationPage = new Registration("section", {
   className: `${styles.formBlock}`,
   form,
-  url: "/login",
+  url: "/",
   title: "Войти",
   attr: {
     class: `${styles.regisrationWrapper}`,

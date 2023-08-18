@@ -9,8 +9,12 @@ import GoBack from "../../components/goBack/goBack";
 import ChangePassword from "./changePassword";
 import styles from "./changePassword.module.scss";
 import ChangeBlockPassword from "./blockPassword/blockPassword";
+import UsersController from "../../controllers/users";
+import { ChangeUserPasswordFormModel } from "../../types/file";
 
-const requiredKeys = ["oldPassword", "newPassword", "repeatNewPassword"];
+const usersController = new UsersController();
+
+const requiredKeys = ["oldPassword", "newPassword"];
 
 const setError = (element: Record<string, any>, message: string) => {
   const inputControl = element.parentElement.parentElement;
@@ -79,7 +83,6 @@ const validateInputs = () => {
     setError(repeatNewPassword, "Пароли не совпадают");
   } else {
     setSuccess(repeatNewPassword);
-    data = Object.assign(data, { repeatNewPassword: repeatNewPasswordValue });
   }
 
   return data;
@@ -102,13 +105,14 @@ const changePasswordForm = (event: SubmitEvent) => {
   const checkData: boolean = checkKeys(data, requiredKeys);
   if (!checkData) {
     console.log("need validate <-------");
-  } else {
-    console.log("good <-------");
+    return;
   }
+
+  usersController.changeUserPassword(data as ChangeUserPasswordFormModel);
 };
 
 const goBack = new GoBack("aside", {
-  url: "/",
+  url: "/settings",
   arrowLeftSVG: `${arrowLeftSVG}`,
   attr: {
     class: `${styles.back}`,

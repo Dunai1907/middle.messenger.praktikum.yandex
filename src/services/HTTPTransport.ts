@@ -12,13 +12,14 @@ type Options = {
   method: METHOD;
   data?: any;
   timeout?: number;
+  withCredentials?: boolean;
 };
 
 type OptionsWithoutMethod = Omit<Options, "method">;
 
 type HTTPMethod = (
   url: string,
-  options: OptionsWithoutMethod
+  options?: OptionsWithoutMethod
 ) => Promise<XMLHttpRequest>;
 
 function queryStringify(data: Record<string, any>) {
@@ -33,7 +34,8 @@ function queryStringify(data: Record<string, any>) {
 }
 
 class HTTPTransport {
-  get: HTTPMethod = (url, options = {}) => {
+  protected prefix = "https://ya-praktikum.tech/api/v2";
+  public get: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
       { ...options, method: METHOD.GET },
@@ -41,7 +43,7 @@ class HTTPTransport {
     );
   };
 
-  post: HTTPMethod = (url, options = {}) => {
+  public post: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
       { ...options, method: METHOD.POST },
@@ -49,10 +51,10 @@ class HTTPTransport {
     );
   };
 
-  put: HTTPMethod = (url, options = {}) => {
+  public put: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
-      { ...options, method: METHOD.POST },
+      { ...options, method: METHOD.PUT },
       options.timeout
     );
   };
@@ -60,7 +62,7 @@ class HTTPTransport {
   delete: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
-      { ...options, method: METHOD.POST },
+      { ...options, method: METHOD.DELETE },
       options.timeout
     );
   };
@@ -70,7 +72,7 @@ class HTTPTransport {
     options: Options = { method: METHOD.GET },
     timeout = 5000
   ): Promise<XMLHttpRequest> {
-    const { headers = {}, method, data } = options;
+    const { headers = {}, method, data, withCredentials = true } = options;
 
     return new Promise((resolve, reject) => {
       if (!method) {
@@ -81,7 +83,12 @@ class HTTPTransport {
       const xhr = new XMLHttpRequest();
       const isGet = method === METHOD.GET;
 
-      xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url);
+      xhr.open(
+        method,
+        isGet && !!data
+          ? `${this.prefix}${url}${queryStringify(data)}`
+          : `${this.prefix}${url}`
+      );
 
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
@@ -95,12 +102,16 @@ class HTTPTransport {
       xhr.onerror = reject;
 
       xhr.timeout = timeout;
+      xhr.withCredentials = withCredentials;
       xhr.ontimeout = reject;
 
       if (isGet || !data) {
         xhr.send();
-      } else {
+      } else if (data instanceof FormData) {
         xhr.send(data);
+      } else {
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send(JSON.stringify(data));
       }
     });
   }

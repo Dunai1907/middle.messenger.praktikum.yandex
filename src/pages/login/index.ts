@@ -5,8 +5,11 @@ import Login from "./login";
 import { isValidLogin, isValidPassword } from "../../utils/validation";
 import checkKeys from "../../utils/checkKeys";
 import styles from "./login.module.scss";
+import AuthController from "../../controllers/auth";
+import { LoginFormModel } from "../../types/file";
 
 const requiredKeys = ["login", "password"];
+const authController = new AuthController();
 
 const setError = (element: Record<string, any>, message: string) => {
   const inputControl = element.parentElement.parentElement;
@@ -84,9 +87,8 @@ const loginForm = (event: SubmitEvent) => {
   const checkData: boolean = checkKeys(data, requiredKeys);
   if (!checkData) {
     console.log("need validate <-------");
-  } else {
-    console.log("good <-------");
   }
+  authController.login(data as LoginFormModel);
 };
 
 const buttonBig = new Button("button", {
@@ -155,7 +157,7 @@ const form = new Form("form", {
 const loginPage = new Login("section", {
   className: `${styles.formBlock}`,
   form,
-  url: "/registration",
+  url: "/sign-up",
   title: "Нет аккаунта?",
   attr: {
     class: `${styles.loginWrapper}`,

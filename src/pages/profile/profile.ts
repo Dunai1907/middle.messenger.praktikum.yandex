@@ -4,8 +4,10 @@ import GoBack from "../../components/goBack/goBack";
 import Avatar from "../../components/avatar/avatar";
 import BlockData from "./modules/blockData/blockData";
 import BlockAction from "./modules/blockAction/blockAction";
+import ModalWindow from "../chats/components/modalWindow/modalWindow";
 
 type ProfileProps = {
+  modalWindowChangeAvatar: ModalWindow;
   goBack: GoBack;
   classData: string;
   avatar: Avatar;

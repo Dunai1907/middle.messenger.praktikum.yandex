@@ -16,10 +16,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const router = new Router(app);
 
   router
-    .add("/", chatsPage)
-    .add("/login", loginPage)
-    .add("/registration", registrationPage)
-    .add("/profile", profilePage)
+    .add("/messenger", chatsPage)
+    .add("/", loginPage)
+    .add("/sign-up", registrationPage)
+    .add("/settings", profilePage)
     .add("/change-data", changeDataPage)
     .add("/change-password", changePasswordPage);
 

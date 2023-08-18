@@ -1,5 +1,6 @@
 import tpl from "./blockAction.tmpl";
 import Block from "../../../../services/Block";
+import Button from "../../../../components/button/button";
 
 type BlockActionProps = {
   classAction: string;
@@ -9,9 +10,10 @@ type BlockActionProps = {
   classLine: string;
   changePasswordPath: string;
   changePassword: string;
-  classRed: string;
-  path: string;
-  exit: string;
+  buttonLogout: Button;
+  // classRed: string;
+  // path: string;
+  // exit: string;
   attr: Record<string, string>;
 };
 

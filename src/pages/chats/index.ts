@@ -24,6 +24,9 @@ import ListMessages from "./modules/userChat/listMessages/listMessages";
 import WindowActions from "./components/windowActions/windowActions";
 import ModalWindow from "./components/modalWindow/modalWindow";
 import Button from "../../components/button/button";
+import ChatsController from "../../controllers/chats";
+
+const chatsController = new ChatsController();
 
 const user = {
   avatar: "https://img.icons8.com/?size=512&id=Rke83hCOnYV0&format=png",
@@ -124,9 +127,27 @@ const addUser = () => {
       modalWindow?.classList.add(`${styles.modalWindowH}`);
     }
   });
+
+  const form = document.querySelector('[data-name="addUser_modal"]');
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const input: HTMLInputElement | null = document.querySelector(
+      '[name="addNewUser"]'
+    );
+    if (!input) {
+      return;
+    }
+    const inputValue = input.value.trim();
+    const chatId = 4315;
+    chatsController.addUsersToChat({ login: inputValue, chatId });
+
+    modalWindow?.classList.remove(`${styles.modalWindowV}`);
+    modalWindow?.classList.add(`${styles.modalWindowH}`);
+  });
 };
 
 const deleteUser = () => {
+  console.log("2 <-------");
   const block = document.querySelector('[data-actions="actionsUser"]');
   const modalWindow = document.querySelector('[data-name="modalWindowDelete"]');
   modalWindow?.classList.remove(`${styles.modalWindowH}`);
@@ -138,6 +159,23 @@ const deleteUser = () => {
       modalWindow?.classList.remove(`${styles.modalWindowV}`);
       modalWindow?.classList.add(`${styles.modalWindowH}`);
     }
+  });
+
+  const form = document.querySelector('[data-name="deleteUser_modal"]');
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const input: HTMLInputElement | null = document.querySelector(
+      '[name="deleteUser"]'
+    );
+    if (!input) {
+      return;
+    }
+    const inputValue = input.value.trim();
+    const chatId = 4315;
+    chatsController.deleteUsersToChat({ login: inputValue, chatId });
+
+    modalWindow?.classList.remove(`${styles.modalWindowV}`);
+    modalWindow?.classList.add(`${styles.modalWindowH}`);
   });
 };
 
@@ -155,6 +193,37 @@ const toggleUpload = () => {
   block?.classList.toggle(`${styles.displayBlock}`);
 };
 
+const addChat = () => {
+  const modalWindow = document.querySelector(
+    '[data-name="modalWindowCreateChat"]'
+  );
+  modalWindow?.classList.remove(`${styles.modalWindowH}`);
+  modalWindow?.classList.add(`${styles.modalWindowV}`);
+
+  modalWindow?.addEventListener("click", (event) => {
+    if (event.target === modalWindow) {
+      modalWindow?.classList.remove(`${styles.modalWindowV}`);
+      modalWindow?.classList.add(`${styles.modalWindowH}`);
+    }
+  });
+
+  const form = document.querySelector('[data-name="createChat_modal"]');
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const input: HTMLInputElement | null = document.querySelector(
+      '[name="createChat"]'
+    );
+    if (!input) {
+      return;
+    }
+    const inputValue = input.value.trim();
+    chatsController.createChat({ title: inputValue });
+
+    modalWindow?.classList.remove(`${styles.modalWindowV}`);
+    modalWindow?.classList.add(`${styles.modalWindowH}`);
+  });
+};
+
 const messageForm = (event: SubmitEvent) => {
   event.preventDefault();
   const input: HTMLInputElement | null =
@@ -170,14 +239,54 @@ const messageForm = (event: SubmitEvent) => {
   }
 };
 
+const buttonCreateChat = new Button("button", {
+  classSpan: `${styles.createChatText}`,
+  name: "Создать чат",
+  attr: {
+    class: `${styles.buttonCreateChat}`,
+  },
+  events: {
+    click: addChat,
+  },
+});
+
+const buttonCreate = new Button("button", {
+  classSpan: `${styles.buttonText}`,
+  name: "Создать",
+  attr: {
+    class: `${styles.buttonModalWindow}`,
+    type: "submit",
+  },
+});
+
+const modalWindowCreateChat = new ModalWindow("div", {
+  classContent: `${styles.modalContent}`,
+  classSpan: `${styles.spanModalWindow}`,
+  name: "Создать чат",
+  dataName: "createChat_modal",
+  classLabel: `${styles.labelModalWindow}`,
+  labelName: "Название чата",
+  inputType: "text",
+  inputName: "createChat",
+  classInput: `${styles.inputModalWindow}`,
+  classLine: `${styles.line}`,
+  buttonAction: buttonCreate,
+  attr: {
+    class: `${styles.modalWindowH}`,
+    "data-name": "modalWindowCreateChat",
+  },
+});
+
 const listChats = new ListChats("aside", {
-  hrefValue: "/profile",
+  modalWindowCreateChat,
+  hrefValue: "/settings",
   stylesButtonProfile: `${styles.buttonProfile}`,
   stylesForm: `${styles.form}`,
   searchSVG: `${searchSVG}`,
   stylesSearch: `${styles.search}`,
   items: arrChat,
   profileSVG: `${profileSVG}`,
+  buttonCreateChat,
   attr: {
     class: `${styles.listChats}`,
   },
@@ -342,6 +451,7 @@ const modalWindowAdd = new ModalWindow("div", {
   dataName: "addUser_modal",
   classLabel: `${styles.labelModalWindow}`,
   labelName: "login",
+  inputType: "text",
   inputName: "addNewUser",
   classInput: `${styles.inputModalWindow}`,
   classLine: `${styles.line}`,
@@ -359,6 +469,7 @@ const modalWindowDelete = new ModalWindow("div", {
   dataName: "deleteUser_modal",
   classLabel: `${styles.labelModalWindow}`,
   labelName: "login",
+  inputType: "text",
   inputName: "deleteUser",
   classInput: `${styles.inputModalWindow}`,
   classLine: `${styles.line}`,

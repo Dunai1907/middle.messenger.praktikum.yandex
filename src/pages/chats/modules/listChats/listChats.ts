@@ -1,5 +1,7 @@
 import tpl from "./listChats.tmpl";
 import Block from "../../../../services/Block";
+import Button from "../../../../components/button/button";
+import ModalWindow from "../../components/modalWindow/modalWindow";
 
 type ChatProp = {
   stylesChat: string;
@@ -22,6 +24,7 @@ type ChatProp = {
 };
 
 type ListChatsProps = {
+  modalWindowCreateChat: ModalWindow;
   hrefValue: string;
   stylesButtonProfile: string;
   profileSVG: string;
@@ -29,6 +32,7 @@ type ListChatsProps = {
   searchSVG: string;
   stylesSearch: string;
   items: ChatProp[];
+  buttonCreateChat: Button;
   attr: Record<string, string>;
 };
 

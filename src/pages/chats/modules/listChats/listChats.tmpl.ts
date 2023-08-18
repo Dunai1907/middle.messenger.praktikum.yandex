@@ -30,6 +30,8 @@ const tpl = `
     </div>
   </div>
 {{/each}}
+{{{buttonCreateChat}}}
+{{{modalWindowCreateChat}}}
 `;
 
 export default tpl;

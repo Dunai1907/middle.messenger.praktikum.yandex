@@ -5,6 +5,7 @@ type ButtonProps = {
   classSpan?: string;
   name: string;
   attr: Record<string, string>;
+  events?: {};
 };
 
 export default class Button extends Block<ButtonProps> {
