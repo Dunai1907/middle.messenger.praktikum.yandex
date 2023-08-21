@@ -7,6 +7,7 @@ import {
   ChangeUserProfileFormModel,
   ChangeUserPasswordFormModel,
 } from "../types/file";
+import store from "../services/Store";
 
 const changeUserProfileAPI = new ChangeUserProfileAPI();
 const changeUserPasswordAPI = new ChangeUserPasswordAPI();
@@ -17,9 +18,9 @@ const app = document.querySelector("#app");
 const router = new Router(app);
 
 class UsersController {
-  public async changeUserProfile(data: ChangeUserProfileFormModel) {
+  public changeUserProfile(data: ChangeUserProfileFormModel) {
     try {
-      await changeUserProfileAPI.request(data);
+      changeUserProfileAPI.request(data);
       router.go("/settings");
     } catch (error) {
       console.log("error <-------");
@@ -37,9 +38,11 @@ class UsersController {
     }
   }
 
-  public async changeUserAvatar(file: File) {
+  public changeUserAvatar(file: File) {
     try {
-      await changeUserAvatarAPI.request(file);
+      changeUserAvatarAPI.request(file).then((data) => {
+        store.set("userData", JSON.parse(data.response));
+      });
     } catch (error) {
       console.log("error <-------");
       // Логика обработки ошибок

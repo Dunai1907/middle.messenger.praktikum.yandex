@@ -108,11 +108,14 @@ class Block<T extends Record<string, any>> {
     const children: Record<string, any> = {};
     const props: Record<string, any> = {};
 
-    Object.keys(propsAndChilds).forEach((key) => {
-      if (propsAndChilds[key] instanceof Block) {
-        children[key] = propsAndChilds[key];
+    Object.entries(propsAndChilds).forEach(([key, value]) => {
+      if (
+        value instanceof Block ||
+        (Array.isArray(value) && value.every((v) => v instanceof Block))
+      ) {
+        children[key] = value;
       } else {
-        props[key] = propsAndChilds[key];
+        props[key] = value;
       }
     });
 
@@ -123,31 +126,54 @@ class Block<T extends Record<string, any>> {
     if (typeof props === "undefined") {
       props = this._props;
     }
-
     const propsAndStubs = { ...props };
 
     Object.entries(this._children).forEach(([key, child]) => {
-      propsAndStubs[key] = `<div data-id=${child._id}></div>`;
-    });
-
-    const fragment: any = this._createDocumentElement("template");
-    fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
-
-    Object.values(this._children).forEach((child) => {
-      const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
-      if (stub) {
-        stub.replaceWith(child.getContent());
+      if (Array.isArray(child)) {
+        console.log("child1 <-------", child);
+        propsAndStubs[key] = child.map((c) => `<div data-id="${c._id}"></div>`);
+        console.log("propsAndStubs[key] <-------", propsAndStubs[key]);
+      } else {
+        console.log("child2 <-------", child);
+        propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
       }
     });
 
+    const fragment: any = this._createDocumentElement("template");
+    // console.log("propsAndStubs <-------", propsAndStubs);
+    // console.log("template <-------", template);
+    fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
+
+    // console.log("fragment.innerHTML <-------", fragment.innerHTML);
+
+    const replaceTagToComponent = (child: Block<any>) => {
+      const tag = fragment.content.querySelector(`[data-id="${child._id}"]`);
+      console.log("tag <-------", tag);
+      if (!tag) {
+        return;
+      }
+      tag.replaceWith(child.getContent()!);
+    };
+
+    Object.values(this._children).forEach((child) => {
+      if (Array.isArray(child)) {
+        console.log("childARR <-------", child);
+        child.forEach((componentItem) => {
+          replaceTagToComponent(componentItem);
+        });
+      } else {
+        console.log("childObj <-------", child);
+        replaceTagToComponent(child);
+      }
+    });
     return fragment.content;
   }
 
   _componentDidMount() {
     this.componentDidMount();
-    Object.values(this._children).forEach((child) => {
-      child.dispatchComponentDidMount();
-    });
+    // Object.values(this._children).forEach((child) => {
+    //   child.dispatchComponentDidMount();
+    // });
   }
 
   componentDidMount() {}

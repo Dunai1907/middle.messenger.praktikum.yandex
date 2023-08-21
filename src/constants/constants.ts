@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+export const urlResources = "https://ya-praktikum.tech/api/v2/resources";
 export const users = [
   {
     avatar: "https://img.icons8.com/?size=512&id=Rke83hCOnYV0&format=png",
