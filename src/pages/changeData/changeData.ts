@@ -34,9 +34,7 @@ export default class ChangeData extends Block<ChangeDataProps> {
   constructor() {
     const props = new ChangeDataProps();
     const userData = store.getState()["userData"];
-    const svg = userData.avatar
-      ? `${userData.avatar}`
-      : `${unionSVG}`;
+    const svg = userData?.avatar ? `${userData.avatar}` : `${unionSVG}`;
     props.avatar = new Avatar("div", {
       unionSVG: svg,
       width: "130",
@@ -61,7 +59,7 @@ export default class ChangeData extends Block<ChangeDataProps> {
         classInput: `${styles.changeInput}`,
         type: "email",
         inputName: "email",
-        value: `${userData.email}`,
+        value: `${userData?.email}`,
         classLine: `${styles.lineNone}`,
         classError: `${styles.error}`,
         attr: {
@@ -77,7 +75,7 @@ export default class ChangeData extends Block<ChangeDataProps> {
         classInput: `${styles.changeInput}`,
         type: "text",
         inputName: "login",
-        value: `${userData.login}`,
+        value: `${userData?.login}`,
         classLine: `${styles.lineNone}`,
         classError: `${styles.error}`,
         attr: {
@@ -93,7 +91,7 @@ export default class ChangeData extends Block<ChangeDataProps> {
         classInput: `${styles.changeInput}`,
         type: "text",
         inputName: "first_name",
-        value: `${userData.first_name}`,
+        value: `${userData?.first_name}`,
         classLine: `${styles.lineNone}`,
         classError: `${styles.error}`,
         attr: {
@@ -109,7 +107,7 @@ export default class ChangeData extends Block<ChangeDataProps> {
         classInput: `${styles.changeInput}`,
         type: "text",
         inputName: "second_name",
-        value: `${userData.second_name}`,
+        value: `${userData?.second_name}`,
         classLine: `${styles.lineNone}`,
         classError: `${styles.error}`,
         attr: {
@@ -125,7 +123,7 @@ export default class ChangeData extends Block<ChangeDataProps> {
         classInput: `${styles.changeInput}`,
         type: "text",
         inputName: "display_name",
-        value: `${userData.display_name}`,
+        value: `${userData?.display_name}`,
         classLine: `${styles.lineNone}`,
         classError: `${styles.error}`,
         attr: {
@@ -141,7 +139,7 @@ export default class ChangeData extends Block<ChangeDataProps> {
         classInput: `${styles.changeInput}`,
         type: "tel",
         inputName: "phone",
-        value: `${userData.phone}`,
+        value: `${userData?.phone}`,
         classLine: `${styles.lineNone}`,
         classError: `${styles.error}`,
         attr: {
@@ -174,27 +172,30 @@ export default class ChangeData extends Block<ChangeDataProps> {
 
   updateUserData() {
     let userData = store.getState()["userData"];
-    this._children.avatar.setProps({
-      unionSVG: `${userData.avatar}`,
-    });
-    this._children.blockData._children.changeEmail.setProps({
-      value: userData.email,
-    });
-    this._children.blockData._children.changeLogin.setProps({
-      value: userData.login,
-    });
-    this._children.blockData._children.changeFirstName.setProps({
-      value: userData.first_name,
-    });
-    this._children.blockData._children.changeSecondName.setProps({
-      value: userData.second_name,
-    });
-    this._children.blockData._children.changeChatsName.setProps({
-      value: userData.display_name,
-    });
-    this._children.blockData._children.changePhone.setProps({
-      value: userData.phone,
-    });
+
+    if (userData) {
+      this._children.avatar.setProps({
+        unionSVG: `${userData.avatar}`,
+      });
+      this._children.blockData._children.changeEmail.setProps({
+        value: userData.email,
+      });
+      this._children.blockData._children.changeLogin.setProps({
+        value: userData.login,
+      });
+      this._children.blockData._children.changeFirstName.setProps({
+        value: userData.first_name,
+      });
+      this._children.blockData._children.changeSecondName.setProps({
+        value: userData.second_name,
+      });
+      this._children.blockData._children.changeChatsName.setProps({
+        value: userData.display_name,
+      });
+      this._children.blockData._children.changePhone.setProps({
+        value: userData.phone,
+      });
+    }
   }
 
   inputBlur() {

@@ -1,5 +1,5 @@
 import LoginPage from "./pages/login";
-import registrationPage from "./pages/registration";
+import RegistrationPage from "./pages/registration";
 import ProfilePage from "./pages/profile";
 import ChangeDataPage from "./pages/changeData";
 import ChangePasswordPage from "./pages/changePassword";
@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
   router
     .add("/messenger", new ChatsPage())
     .add("/", new LoginPage())
-    .add("/sign-up", registrationPage)
+    .add("/sign-up", new RegistrationPage())
     .add("/settings", new ProfilePage())
     .add("/change-data", new ChangeDataPage())
     .add("/change-password", new ChangePasswordPage());

@@ -130,25 +130,17 @@ class Block<T extends Record<string, any>> {
 
     Object.entries(this._children).forEach(([key, child]) => {
       if (Array.isArray(child)) {
-        console.log("child1 <-------", child);
         propsAndStubs[key] = child.map((c) => `<div data-id="${c._id}"></div>`);
-        console.log("propsAndStubs[key] <-------", propsAndStubs[key]);
       } else {
-        console.log("child2 <-------", child);
         propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
       }
     });
 
     const fragment: any = this._createDocumentElement("template");
-    // console.log("propsAndStubs <-------", propsAndStubs);
-    // console.log("template <-------", template);
     fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
-
-    // console.log("fragment.innerHTML <-------", fragment.innerHTML);
 
     const replaceTagToComponent = (child: Block<any>) => {
       const tag = fragment.content.querySelector(`[data-id="${child._id}"]`);
-      console.log("tag <-------", tag);
       if (!tag) {
         return;
       }
@@ -157,12 +149,10 @@ class Block<T extends Record<string, any>> {
 
     Object.values(this._children).forEach((child) => {
       if (Array.isArray(child)) {
-        console.log("childARR <-------", child);
         child.forEach((componentItem) => {
           replaceTagToComponent(componentItem);
         });
       } else {
-        console.log("childObj <-------", child);
         replaceTagToComponent(child);
       }
     });
@@ -195,8 +185,7 @@ class Block<T extends Record<string, any>> {
   }
 
   componentDidUpdate(oldProps: T, newProps: T) {
-    console.log("oldProps <-------", oldProps);
-    console.log("newProps <-------", newProps);
+    console.log(newProps, oldProps);
     return true;
   }
 

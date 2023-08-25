@@ -15,28 +15,8 @@ class Store extends EventBus {
   static STORE_NAME = "myAppStore";
   private state: Indexed = {};
 
-  constructor() {
-    if (Store._instance) {
-      return Store._instance;
-    }
-    super();
-    const savedState = localStorage.getItem(Store.STORE_NAME);
-    this.state = savedState ? JSON.parse(savedState) ?? {} : {};
-
-    Store._instance = this;
-    this.on(StoreEvents.Updated, () => {
-      localStorage.setItem(Store.STORE_NAME, JSON.stringify(this.state));
-    });
-  }
-
   public getState() {
     return this.state;
-  }
-
-  public removeState() {
-    this.state = {};
-    this.emit(StoreEvents.Updated);
-    localStorage.clear();
   }
 
   public set(path: string, value: unknown) {

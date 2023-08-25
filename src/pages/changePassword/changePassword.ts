@@ -21,9 +21,7 @@ export default class ChangePassword extends Block<ChangePasswordProps> {
   constructor() {
     const props = new ChangePasswordProps();
     const userData = store.getState()["userData"];
-    const svg = userData.avatar
-      ? `${userData.avatar}`
-      : `${unionSVG}`;
+    const svg = userData?.avatar ? `${userData.avatar}` : `${unionSVG}`;
     props.avatar = new Avatar("div", {
       unionSVG: svg,
       width: "130",

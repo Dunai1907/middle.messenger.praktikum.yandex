@@ -7,7 +7,7 @@ const tpl = `
   <input placeholder="поиск" class={{stylesSearch}} type="search"/>
 </form>
 {{#each items}}
-  {{{chat}}}
+  {{{this}}}
 {{/each}}
 {{{buttonCreateChat}}}
 {{{modalWindowCreateChat}}}

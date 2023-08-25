@@ -7,17 +7,24 @@ const tpl = `
     <div class={{stylesName}}>
       <span class={{stylesSpanName}}>{{name}}</span>
     </div>
-    <div class={{stylesDate}}>
-      <span class={{stylesSpanDate}}>{{date}}</span>
-    </div>
+    {{#if isLastMessage}}
+      <div class={{stylesDate}}>
+        <span class={{stylesSpanDate}}>{{date}}</span>
+      </div>
+    {{/if}}
   </div>
-  <div class={{stylesWrap}}>
-    <div class={{stylesText}}>
-      <span class={{stylesSpanText}}>{{text}}</span>
+  {{#if isLastMessage}}
+    <div class={{stylesWrap}}>
+      <div class={{stylesText}}>
+        <span class={{stylesSpanText}}>{{text}}</span>
+      </div>
+      {{#if isUnreadCount}}
+        <div class={{stylesNumber}}>
+          <span class={{stylesSpanNumber}}>{{number}}</span></div>
+        </div>
+      {{/if}}
     </div>
-    <div class={{stylesNumber}}>
-      <span class={{stylesSpanNumber}}>{{number}}</span></div>
-  </div>
+  {{/if}}
 </div>
 `;
 

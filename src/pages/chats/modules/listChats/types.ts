@@ -10,7 +10,8 @@ export class ListChatsProps {
   stylesForm!: string;
   searchSVG!: string;
   stylesSearch!: string;
-  items!: Chat[];
+  items?: Chat[];
   buttonCreateChat!: Button;
+
   attr!: Record<string, string>;
 }

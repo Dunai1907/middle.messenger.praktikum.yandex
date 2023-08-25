@@ -177,29 +177,29 @@ export default class Profile extends Block<ProfileProps> {
     let userData = store.getState()["userData"];
     if (userData) {
       userData.avatar = `${userData.avatar}`;
+      this.setProps({ name: userData.login });
+      this._children.blockData._children.dataEmail.setProps({
+        value: userData.email,
+      });
+      this._children.blockData._children.dataLogin.setProps({
+        value: userData.login,
+      });
+      this._children.blockData._children.dataFirstName.setProps({
+        value: userData.first_name,
+      });
+      this._children.blockData._children.dataSecondName.setProps({
+        value: userData.second_name,
+      });
+      this._children.blockData._children.dataChatsName.setProps({
+        value: userData.display_name,
+      });
+      this._children.blockData._children.dataPhone.setProps({
+        value: userData.phone,
+      });
+      this._children.avatar.setProps({
+        unionSVG: `${userData.avatar}`,
+      });
     }
-    this.setProps({ name: userData.login });
-    this._children.blockData._children.dataEmail.setProps({
-      value: userData.email,
-    });
-    this._children.blockData._children.dataLogin.setProps({
-      value: userData.login,
-    });
-    this._children.blockData._children.dataFirstName.setProps({
-      value: userData.first_name,
-    });
-    this._children.blockData._children.dataSecondName.setProps({
-      value: userData.second_name,
-    });
-    this._children.blockData._children.dataChatsName.setProps({
-      value: userData.display_name,
-    });
-    this._children.blockData._children.dataPhone.setProps({
-      value: userData.phone,
-    });
-    this._children.avatar.setProps({
-      unionSVG: `${userData.avatar}`,
-    });
   }
 
   changeAvatar() {
@@ -235,6 +235,5 @@ export default class Profile extends Block<ProfileProps> {
 
   logout() {
     this._authController.logout();
-    store.removeState();
   }
 }
