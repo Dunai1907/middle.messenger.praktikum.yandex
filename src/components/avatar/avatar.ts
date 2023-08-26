@@ -5,7 +5,10 @@ type AvatarProps = {
   width?: string;
   height?: string;
   attr: Record<string, string>;
-  events?: {};
+  events?: {
+    // eslint-disable-next-line no-unused-vars
+    click: (event: any) => void;
+  };
 };
 
 export default class Avatar extends Block<AvatarProps> {

@@ -1,4 +1,5 @@
 const tpl = `
+{{{modalWindowChangeAvatar}}}
 {{#if isUnSelectChat}}
   <div class={{stylesDivUnSelect}}>
     <div class={{stylesUnSelect}}>
@@ -12,6 +13,7 @@ const tpl = `
     {{{blockActions}}}
     <hr class={{stylesLine}} />
     {{{listMessages}}}
+    {{{buttonDeleteChat}}}
     <hr class={{stylesLine}} />
     {{{blockUpload}}}
     {{{createMessage}}}

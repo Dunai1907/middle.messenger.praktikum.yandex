@@ -14,6 +14,7 @@ import DataProfile from "./components/data/data";
 import AuthController from "../../controllers/auth";
 import { ProfileProps } from "./types";
 import store, { StoreEvents } from "../../services/Store";
+import { urlResources } from "../../constants/constants";
 
 export default class Profile extends Block<ProfileProps> {
   private _usersController = new UsersController();
@@ -22,9 +23,6 @@ export default class Profile extends Block<ProfileProps> {
   constructor() {
     const props = new ProfileProps();
     const userData = store.getState()["userData"];
-    if (userData) {
-      userData.avatar = `${userData.avatar}`;
-    }
     props.userData = userData
       ? userData
       : {
@@ -197,7 +195,7 @@ export default class Profile extends Block<ProfileProps> {
         value: userData.phone,
       });
       this._children.avatar.setProps({
-        unionSVG: `${userData.avatar}`,
+        unionSVG: `${urlResources}/${userData.avatar}`,
       });
     }
   }

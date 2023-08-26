@@ -4,7 +4,7 @@ import GoBack from "../../components/goBack/goBack";
 import Avatar from "../../components/avatar/avatar";
 import UsersController from "../../controllers/users";
 import { ChangePasswordProps } from "./types";
-import store from "../../services/Store";
+import store, { StoreEvents } from "../../services/Store";
 import styles from "./changePassword.module.scss";
 import arrowLeftSVG from "../../../static/decor/arrowLeft.svg";
 import unionSVG from "../../../static/decor/union.svg";
@@ -14,16 +14,15 @@ import Button from "../../components/button/button";
 import { isValidPassword } from "../../utils/validation";
 import checkKeys from "../../utils/checkKeys";
 import { ChangeUserPasswordFormModel } from "../../types/file";
+import { urlResources } from "../../constants/constants";
 
 export default class ChangePassword extends Block<ChangePasswordProps> {
   private _usersController = new UsersController();
   private _requiredKeys = ["oldPassword", "newPassword"];
   constructor() {
     const props = new ChangePasswordProps();
-    const userData = store.getState()["userData"];
-    const svg = userData?.avatar ? `${userData.avatar}` : `${unionSVG}`;
     props.avatar = new Avatar("div", {
-      unionSVG: svg,
+      unionSVG: `${unionSVG}`,
       width: "130",
       height: "130",
       attr: {
@@ -103,6 +102,17 @@ export default class ChangePassword extends Block<ChangePasswordProps> {
       class: `${styles.changePasswordWrapper}`,
     }),
       super("div", props);
+    store.on(StoreEvents.Updated, () => this.updateUserData());
+  }
+
+  updateUserData() {
+    let userData = store.getState()["userData"];
+
+    if (userData) {
+      this._children.avatar.setProps({
+        unionSVG: `${urlResources}/${userData.avatar}`,
+      });
+    }
   }
 
   inputBlur() {

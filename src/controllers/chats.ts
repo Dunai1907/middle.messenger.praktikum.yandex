@@ -1,5 +1,7 @@
 import AddUsersToChatAPI from "../api/chats/add-users-to-chat";
+import ChangeChatAvatarAPI from "../api/chats/change-chat-avatar";
 import CreateChatAPI from "../api/chats/create-chat";
+import DeleteChatAPI from "../api/chats/delete-chat";
 import DeleteUsersFromChatAPI from "../api/chats/delete-users-from-chat";
 import GetChatUsersAPI from "../api/chats/get-chat-users";
 import GetListChatsAPI from "../api/chats/get-list-chats";
@@ -9,17 +11,29 @@ import store from "../services/Store";
 import CommunicationWebSocket from "../services/WebSocket";
 
 const createChatAPI = new CreateChatAPI();
+const deleteChatAPI = new DeleteChatAPI();
 const getListChatsAPI = new GetListChatsAPI();
 const findUsersByLoginAPI = new FindUsersAPI();
 const addUsersToChatAPI = new AddUsersToChatAPI();
 const deleteUsersFromChatAPI = new DeleteUsersFromChatAPI();
 const getTokenAPI = new GetTokenAPI();
 const getChatUsersAPI = new GetChatUsersAPI();
+const changeChatAvatarAPI = new ChangeChatAvatarAPI();
 
 class ChatsController {
   public createChat(data: { title: string }) {
     try {
       createChatAPI.request(data).then(() => {
+        this.getListChats();
+      });
+    } catch (error) {
+      console.log("error <-------");
+    }
+  }
+
+  public deleteChat(data: { chatId: number }) {
+    try {
+      deleteChatAPI.request(data).then(() => {
         this.getListChats();
       });
     } catch (error) {
@@ -52,8 +66,18 @@ class ChatsController {
       const { login, chatId } = data;
       const result = await findUsersByLoginAPI.request(login);
       const users = JSON.parse(result.response);
+      if (!users.length) {
+        alert("Пользователь не существует");
+        return;
+      }
       const usersId = users.map((user: any) => user.id);
-      await addUsersToChatAPI.request({ users: usersId, chatId });
+      await addUsersToChatAPI
+        .request({ users: usersId, chatId })
+        .then((data) => {
+          if (data.response === "OK") {
+            alert("Успешно");
+          }
+        });
     } catch (error) {
       console.log("error <-------");
     }
@@ -103,6 +127,16 @@ class ChatsController {
       const result = await getChatUsersAPI.request(id);
       const users = JSON.parse(result.response);
       store.set("chatUsers", users);
+    } catch (error) {
+      console.log("error <-------");
+    }
+  }
+
+  public changeChatAvatar(chatId: number, file: File) {
+    try {
+      changeChatAvatarAPI.request(chatId, file).then((data) => {
+        store.set("selectedChat", JSON.parse(data.response));
+      });
     } catch (error) {
       console.log("error <-------");
     }

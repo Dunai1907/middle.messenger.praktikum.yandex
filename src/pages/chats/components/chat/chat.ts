@@ -6,12 +6,15 @@ import fotoSVG from "../../../../../static/decor/foto.svg";
 import store from "../../../../services/Store";
 import ChatsController from "../../../../controllers/chats";
 import formatDateForChat from "../../../../utils/formatDateForChat";
+import { urlResources } from "../../../../constants/constants";
 
 export default class Chat extends Block<ChatProps> {
   private _chatsController = new ChatsController();
 
   constructor(chat: any) {
-    const avatar = chat.avatar ? `${chat.avatar}` : `${fotoSVG}`;
+    const avatar = chat.avatar
+      ? `${urlResources}/${chat.avatar}`
+      : `${fotoSVG}`;
 
     const date = chat.last_message
       ? formatDateForChat(chat.last_message?.time)

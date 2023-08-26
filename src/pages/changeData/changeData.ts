@@ -19,6 +19,7 @@ import Button from "../../components/button/button";
 import checkKeys from "../../utils/checkKeys";
 import UsersController from "../../controllers/users";
 import { ChangeUserProfileFormModel } from "../../types/file";
+import { urlResources } from "../../constants/constants";
 
 export default class ChangeData extends Block<ChangeDataProps> {
   private _usersController = new UsersController();
@@ -34,9 +35,9 @@ export default class ChangeData extends Block<ChangeDataProps> {
   constructor() {
     const props = new ChangeDataProps();
     const userData = store.getState()["userData"];
-    const svg = userData?.avatar ? `${userData.avatar}` : `${unionSVG}`;
+    console.log("userData-changeData <-------", userData);
     props.avatar = new Avatar("div", {
-      unionSVG: svg,
+      unionSVG: `${unionSVG}`,
       width: "130",
       height: "130",
       attr: {
@@ -175,7 +176,7 @@ export default class ChangeData extends Block<ChangeDataProps> {
 
     if (userData) {
       this._children.avatar.setProps({
-        unionSVG: `${userData.avatar}`,
+        unionSVG: `${urlResources}/${userData.avatar}`,
       });
       this._children.blockData._children.changeEmail.setProps({
         value: userData.email,

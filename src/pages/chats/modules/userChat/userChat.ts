@@ -23,9 +23,12 @@ import CommunicationWebSocket from "../../../../services/WebSocket";
 import ListMessages from "./listMessages/listMessages";
 import formatTime from "../../../../utils/formatTime";
 import formatDate from "../../../../utils/formatDate";
+import Button from "../../../../components/button/button";
+import { urlResources } from "../../../../constants/constants";
+import ModalWindow from "../../components/modalWindow/modalWindow";
 
 export default class UserChat extends Block<UserChatProps> {
-  // private _chatsController = new ChatsController();
+  private _chatsController = new ChatsController();
   constructor() {
     const props = new UserChatProps();
     (props.isUnSelectChat = true),
@@ -58,7 +61,6 @@ export default class UserChat extends Block<UserChatProps> {
     }
 
     if (chat && list) {
-      // this._chatsController.getToken(chat.id);
       const arrMessage: any[] = [];
       let currentDate: string = "";
       list.map((item: any) => {
@@ -73,7 +75,6 @@ export default class UserChat extends Block<UserChatProps> {
         let message: {};
         const userId = store.getState()["userData"].id;
         const isAuthor = item.user_id === userId ? true : false;
-        // const style = isAuthor ? `${styles.messageRight}` : `${styles.message}`;
         if (isAuthor && item.is_read) {
           message = {
             classUserMessage: `${styles.messageRight}`,
@@ -94,17 +95,7 @@ export default class UserChat extends Block<UserChatProps> {
             classTime: `${styles.time}`,
             time: `${formatTime(item.time)}`,
           };
-        } /* else if (item.isAuthor && !item.isDelivered && !item.isRead) {
-          message = {
-            classUserMessage: `${styles.messageRight}`,
-            classContent: `${styles.content}`,
-            content: `${item.content}`,
-            classImage: `${styles.image}`,
-            delivered: `${sentSVG}`,
-            classTime: `${styles.time}`,
-            time: `${item.time}`,
-          };
-        } */ else {
+        } else {
           message = {
             classUserMessage: `${styles.message}`,
             classContent: `${styles.content}`,
@@ -115,65 +106,35 @@ export default class UserChat extends Block<UserChatProps> {
         }
         arrMessage.push(message);
       });
-      // messages.forEach((item) => {
-      //   // if (currentDate !== item.date) {
-      //   //   currentDate = item.date;
-      //   //   const date = {
-      //   //     classDate: `${styles.dateListMessages}`,
-      //   //     date: `${item.date}`,
-      //   //   };
-      //   //   arrMessage.push(date);
-      //   // }
 
-      //   let message: {};
-
-      //   if (item.isAuthor && item.isRead) {
-      //     message = {
-      //       classUserMessage: `${styles.messageRight}`,
-      //       classContent: `${styles.content}`,
-      //       content: `${item.content}`,
-      //       classImage: `${styles.image}`,
-      //       delivered: `${readSVG}`,
-      //       classTime: `${styles.timeRead}`,
-      //       time: `${item.time}`,
-      //     };
-      //   } else if (item.isAuthor && item.isDelivered && !item.isRead) {
-      //     message = {
-      //       classUserMessage: `${styles.messageRight}`,
-      //       classContent: `${styles.content}`,
-      //       content: `${item.content}`,
-      //       classImage: `${styles.image}`,
-      //       delivered: `${deliveredSVG}`,
-      //       classTime: `${styles.time}`,
-      //       time: `${item.time}`,
-      //     };
-      //   } else if (item.isAuthor && !item.isDelivered && !item.isRead) {
-      //     message = {
-      //       classUserMessage: `${styles.messageRight}`,
-      //       classContent: `${styles.content}`,
-      //       content: `${item.content}`,
-      //       classImage: `${styles.image}`,
-      //       delivered: `${sentSVG}`,
-      //       classTime: `${styles.time}`,
-      //       time: `${item.time}`,
-      //     };
-      //   } else {
-      //     message = {
-      //       classUserMessage: `${styles.message}`,
-      //       classContent: `${styles.content}`,
-      //       content: `${item.content}`,
-      //       classTime: `${styles.time}`,
-      //       time: `${item.time}`,
-      //     };
-      //   }
-      //   arrMessage.push(message);
-      // });
-
-      const avatar = chat.avatar ? `${chat.avatar}` : `${fotoSVG}`;
+      const avatar = chat.avatar
+        ? `${urlResources}/${chat.avatar}`
+        : `${fotoSVG}`;
 
       this.setProps({
         isUnSelectChat: false,
         isSelectChat: true,
+        modalWindowChangeAvatar: new ModalWindow("div", {
+          classContent: `${styles.modalContent}`,
+          classSpan: `${styles.spanModalWindow}`,
+          name: "Загрузите файл",
+          dataName: "changeAvatar_modal",
+          inputType: "file",
+          inputName: "upload_avatar",
+          classInput: `${styles.inputModalWindow}`,
+          buttonAction: new Button("button", {
+            classSpan: `${styles.buttonText}`,
+            name: "Поменять",
+            attr: {
+              class: `${styles.buttonModalWindow}`,
+              type: "submit",
+            },
+          }),
+          attr: {
+            class: `${styles.modalWindowH}`,
+            "data-name": "modalWindowChangeAvatar",
+          },
+        }),
         stylesLine: `${styles.line}`,
         userData: new UserData("div", {
           avatar: new Avatar("div", {
@@ -182,6 +143,9 @@ export default class UserChat extends Block<UserChatProps> {
             height: "34",
             attr: {
               class: `${styles.avatarUser}`,
+            },
+            events: {
+              click: () => this.changeAvatar(),
             },
           }),
           stylesName: `${styles.name}`,
@@ -223,11 +187,20 @@ export default class UserChat extends Block<UserChatProps> {
             "data-actions": "actionsUser",
           },
         }),
-        // listMessages: arrMessage,
         listMessages: new ListMessages("div", {
           items: arrMessage,
           attr: {
             class: `${styles.listMessages}`,
+          },
+        }),
+        buttonDeleteChat: new Button("button", {
+          classSpan: `${styles.createChatText}`,
+          name: "Удалить чат",
+          attr: {
+            class: `${styles.buttonCreateChat}`,
+          },
+          events: {
+            click: () => this.deleteChat(),
           },
         }),
         blockUpload: new WindowActions("div", {
@@ -289,6 +262,60 @@ export default class UserChat extends Block<UserChatProps> {
           class: `${styles.userChat}`,
         },
       });
+    }
+  }
+
+  changeAvatar() {
+    const selectedChat = store.getState()["selectedChat"];
+    const modalWindow = document.querySelector(
+      '[data-name="modalWindowChangeAvatar"]'
+    );
+    modalWindow?.classList.remove(`${styles.modalWindowH}`);
+    modalWindow?.classList.add(`${styles.modalWindowV}`);
+
+    modalWindow?.addEventListener("click", (event) => {
+      if (event.target === modalWindow) {
+        modalWindow?.classList.remove(`${styles.modalWindowV}`);
+        modalWindow?.classList.add(`${styles.modalWindowH}`);
+      }
+    });
+
+    const form = document.querySelector('[data-name="changeAvatar_modal"]');
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const input: HTMLInputElement | null = document.querySelector(
+        '[name="upload_avatar"]'
+      );
+      if (!input?.files) {
+        return;
+      }
+      const selectedFile = input.files[0];
+      this._chatsController.changeChatAvatar(selectedChat.id, selectedFile);
+      modalWindow?.classList.remove(`${styles.modalWindowV}`);
+      modalWindow?.classList.add(`${styles.modalWindowH}`);
+      store.on(StoreEvents.Updated, () => this.updateSelectedChat());
+    });
+  }
+
+  updateSelectedChat() {
+    let selectedChat = store.getState()["selectedChat"];
+    if (selectedChat) {
+      this._children.avatar.setProps({
+        unionSVG: `${urlResources}/${selectedChat.avatar}`,
+      });
+    }
+  }
+
+  deleteChat() {
+    const user = store.getState()["userData"];
+    let chat = store.getState()["selectedChat"];
+    if (user && chat && user.id !== chat.created_by) {
+      alert("Вы не создатель чата");
+    }
+    if (user && chat && user.id === chat.created_by) {
+      this._chatsController.deleteChat({ chatId: chat.id });
+      store.set("selectedChat", null);
+      store.on(StoreEvents.Updated, () => this.update());
     }
   }
 
