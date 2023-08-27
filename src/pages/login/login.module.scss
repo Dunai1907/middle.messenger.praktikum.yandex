@@ -1,3 +1,9 @@
+$blue: rgba(13, 153, 255, 1);
+$purple: rgba(51, 105, 243, 1);
+$white: rgba(255, 255, 255, 1);
+$red: rgba(255, 47, 47, 1);
+$dirtyGrey: rgba(153, 153, 153, 1);
+
 .loginWrapper {
   display: flex;
   min-height: 100vh;
@@ -14,11 +20,11 @@
   align-items: center;
   justify-content: center;
   padding: 15px;
-  border: 2px solid rgba(153, 153, 153, 1);
+  border: 2px solid $dirtyGrey;
   border-radius: 12px;
 
   &:hover {
-    border-color: rgba(13, 153, 255, 1);
+    border-color: $blue;
   }
 }
 
@@ -31,10 +37,10 @@
 
 .line {
   width: 280px;
-  border: 1px solid rgba(51, 105, 243, 1);
+  border: 1px solid $purple;
 
   &:hover {
-    border: 1px solid rgba(13, 153, 255, 1);
+    border: 1px solid $blue;
   }
 }
 
@@ -43,10 +49,10 @@
   border: 0;
   padding: 5px 0;
   margin-bottom: 2px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: $white;
 
   &:focus {
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid $white;
   }
 }
 
@@ -57,10 +63,10 @@
   font-size: 9px;
   font-weight: 500;
   line-height: 9px;
-  color: rgba(153, 153, 153, 1);
+  color: $dirtyGrey;
 
   &:hover {
-    text-decoration: underline 2px rgba(13, 153, 255, 1);
+    text-decoration: underline 2px $blue;
   }
 }
 
@@ -70,7 +76,7 @@
   display: flex;
   align-items: center;
   border: none;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: $white;
 }
 
 .buttonSmall {
@@ -81,10 +87,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background-color: rgba(51, 105, 243, 1);
+  background-color: $purple;
 
   &:hover {
-    border: 1px solid rgba(13, 153, 255, 1);
+    border: 1px solid $blue;
   }
 }
 
@@ -96,17 +102,17 @@
   text-align: center;
 
   &:hover {
-    text-decoration: underline rgba(51, 105, 243, 1);
+    text-decoration: underline $purple;
   }
 }
 
 .buttonSmallText {
   font-size: 13px;
   line-height: 13px;
-  color: rgba(255, 255, 255, 1);
+  color: $white;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -116,12 +122,12 @@
   font-weight: 400;
   line-height: 8px;
   text-align: left;
-  color: rgba(255, 47, 47, 1);
+  color: $red;
 }
 
 .errorBorder {
   border-radius: 5px;
-  border: 2px solid rgba(255, 47, 47, 1);
+  border: 2px solid $red;
 }
 
 .inputControl {

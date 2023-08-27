@@ -1,3 +1,6 @@
+$blue: rgba(13, 153, 255, 1);
+$purple: rgba(51, 105, 243, 1);
+
 .notFoundWrapper {
   display: flex;
   flex-direction: column;
@@ -19,7 +22,7 @@
   text-align: center;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -35,7 +38,7 @@
   text-align: center;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }
 
@@ -45,10 +48,10 @@
   font-weight: 500;
   line-height: 11px;
   text-align: center;
-  color: rgba(51, 105, 243, 1);
+  color: $purple;
   text-decoration: none;
 
   &:hover {
-    text-decoration: 2px underline rgba(13, 153, 255, 1);
+    text-decoration: 2px underline $blue;
   }
 }

@@ -6,7 +6,7 @@ const tpl = `
   <span class={{classSpanDescription}}>{{description}}</span>
 </div>
 <div >
-  <a href="/" class={{classBack}}>{{back}}</a>
+  <a href="/messenger" class={{classBack}}>{{back}}</a>
 </div>
 `;
 

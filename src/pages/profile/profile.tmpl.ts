@@ -1,4 +1,5 @@
 const tpl = `
+{{{modalWindowChangeAvatar}}}
 {{{goBack}}}
 <section class={{classData}}>
   {{{avatar}}}

@@ -24,10 +24,10 @@ These port is in use:
 
 ## For more information
 
-- user registration: (http://localhost:3000/registration).
-- user login: (http://localhost:3000/login).
-- messanger: (http://localhost:3000).
-- user profile: (http://localhost:3000/profile).
+- user registration: (http://localhost:3000/sign-up).
+- user login: (http://localhost:3000).
+- messenger: (http://localhost:3000/messenger).
+- user profile: (http://localhost:3000/settings).
 - change data user: (http://localhost:3000/change-data).
 - change password: (http://localhost:3000/change-password).
 - 404: (http://localhost:3000/other).

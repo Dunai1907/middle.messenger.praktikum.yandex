@@ -7,11 +7,12 @@ type ModalWindowProps = {
   classSpan: string;
   name: string;
   dataName: string;
-  classLabel: string;
-  labelName: string;
+  classLabel?: string;
+  labelName?: string;
+  inputType: string;
   inputName: string;
   classInput: string;
-  classLine: string;
+  classLine?: string;
   buttonAction: Button;
   attr: Record<string, string>;
 };

@@ -4,7 +4,7 @@ const tpl = `
   <form data-name={{dataName}}>
     <label class={{classLabel}}>
       {{labelName}}
-      <input type="text" name={{inputName}} class={{classInput}}></input>
+      <input type={{inputType}} name={{inputName}} class={{classInput}}></input>
     </label>
     <hr class={{classLine}} />
     {{{buttonAction}}}
