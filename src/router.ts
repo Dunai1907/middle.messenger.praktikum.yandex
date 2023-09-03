@@ -1,7 +1,4 @@
-/* eslint-disable no-underscore-dangle */
-import notFoundPage from './pages/404';
-// import serverErrorPage from "./pages/500";
-import { default as renderDom } from './utils/render';
+import { default as renderDom } from "./utils/render";
 
 export default class Router {
   container: any = null;
@@ -27,18 +24,16 @@ export default class Router {
   }
 
   go(url: string | URL | null | undefined) {
-    window.history.pushState({}, '', url);
-    this.container.innerHTML = '';
+    window.history.pushState({}, "", url);
+    this.container.innerHTML = "";
     for (let _url in this.routes) {
       if (_url == url) {
-        // look after
-        renderDom('app', this.routes[url]);
-        // this.container.append(this.routes[_url]);
+        renderDom("app", this.routes[url]);
+
         return;
       }
     }
-    renderDom('app', notFoundPage);
-    // this.container.append(notFoundPage);
+    renderDom("app", this.routes["/not-found"]);
   }
 }
 
