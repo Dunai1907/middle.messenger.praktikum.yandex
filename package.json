@@ -8,7 +8,7 @@
     "dev": "vite --port 3000",
     "prebuild": "tsc --noEmit",
     "build": "npm run prebuild && vite build --emptyOutDir",
-    "start": "node server.js ",
+    "start": "npm run build && node server.js",
     "test": "mocha --es-module-specifier-resolution=node",
     "lint": "node_modules/.bin/eslint",
     "prepare": "husky install"
