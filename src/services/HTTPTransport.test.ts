@@ -11,6 +11,7 @@ describe("HTTPTransport", () => {
   const requests: SinonFakeXMLHttpRequest[] = [];
   beforeEach(() => {
     xhr = Sinon.useFakeXMLHttpRequest();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     global.XMLHttpRequest = xhr;
     xhr.onCreate = (req) => {
