@@ -1,4 +1,15 @@
-.profile_wrapper {
+$blue: rgba(13, 153, 255, 1);
+$purple: rgba(51, 105, 243, 1);
+$lightGrey: rgba(251, 251, 251, 1);
+$darkGrey: rgba(239, 239, 239, 1);
+$grey: rgba(234, 234, 234, 1);
+$dirtyGrey: rgba(153, 153, 153, 1);
+$black: rgba(30, 30, 30, 1);
+$red: rgba(255, 47, 47, 1);
+$white: rgba(255, 255, 255, 1);
+$transparentBlack: rgba(0, 0, 0, 0.4);
+
+.profileWrapper {
   display: flex;
   min-height: 100vh;
 }
@@ -6,13 +17,13 @@
 .back {
   display: flex;
   width: 64px;
-  background-color: #fbfbfb;
+  background-color: $lightGrey;
   border: 2px solid transparent;
   justify-content: center;
   align-items: center;
 
   &:hover {
-    border: 2px solid #0d99ff;
+    border: 2px solid $blue;
   }
 }
 
@@ -24,25 +35,213 @@
 
 .name {
   margin-top: 21px;
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 16px;
-  letter-spacing: 0em;
   text-align: center;
   margin-bottom: 60px;
 
   &:hover {
-    text-decoration: 2px underline #0d99ff;
+    text-decoration: 2px underline $blue;
   }
 }
 
 .line {
   width: 510px;
   margin: 10px 0;
-  border: solid 1px #eaeaea;
+  border: solid 1px $grey;
 
   &:hover {
-    border: 1px solid #0d99ff;
+    border: 1px solid $blue;
+  }
+}
+
+.avatar {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: $darkGrey;
+
+  &:hover {
+    border: 2px solid $blue;
+  }
+}
+
+.line {
+  width: 510px;
+  margin: 10px 0;
+  border: solid 1px $grey;
+
+  &:hover {
+    border: 1px solid $blue;
+  }
+}
+
+.blockData {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.dataWrapper {
+  display: flex;
+  width: 510px;
+  justify-content: space-between;
+}
+
+.spanName {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  text-align: left;
+  color: $black;
+
+  &:hover {
+    text-decoration: 2px underline $blue;
+  }
+}
+
+.spanValue {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  text-align: right;
+  color: $dirtyGrey;
+
+  &:hover {
+    text-decoration: 2px underline $blue;
+  }
+}
+
+.blockAction {
+  display: flex;
+  flex-direction: column;
+}
+
+.action {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  text-align: left;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: 2px underline $blue;
+  }
+}
+
+.mediumBlue {
+  color: $purple;
+}
+
+.red {
+  color: $red;
+  border: none;
+  background-color: $white;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.modalWindowH {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $transparentBlack;
+  opacity: 40%;
+}
+
+.modalWindowV {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $transparentBlack;
+}
+
+.modalContent {
+  margin: 15% auto;
+  padding: 20px;
+  width: 340px;
+  height: 257px;
+  background: $white;
+}
+
+.spanModalWindow {
+  display: block;
+  margin-top: 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  color: $black;
+}
+
+.inputModalWindow {
+  width: 100%;
+  border: 0;
+  padding: 5px 0;
+  margin-bottom: 2px;
+  background-color: $white;
+
+  &:focus {
+    border: 1px solid $white;
+  }
+}
+
+.labelModalWindow {
+  display: block;
+  margin-top: 40px;
+  width: 280px;
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 9px;
+  color: $dirtyGrey;
+
+  &:hover {
+    text-decoration: underline 2px $blue;
+  }
+}
+
+.buttonModalWindow {
+  width: 280px;
+  height: 37px;
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: $purple;
+
+  &:hover {
+    border: 1px solid $blue;
+  }
+}
+
+.buttonText {
+  font-size: 13px;
+  line-height: 13px;
+  color: $white;
+
+  &:hover {
+    text-decoration: 2px underline $blue;
   }
 }

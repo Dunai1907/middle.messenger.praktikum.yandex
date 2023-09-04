@@ -1,14 +1,24 @@
-import styles from "./blockAction.module.scss";
+import tpl from "./blockAction.tmpl";
+import Block from "../../../../services/Block";
+import Button from "../../../../components/button/button";
 
-const blockAction = document.createElement("div");
-blockAction.classList.add(styles.blockAction_wrapper);
+type BlockActionProps = {
+  classAction: string;
+  classMediumBlue: string;
+  changeDataPath: string;
+  changeData: string;
+  classLine: string;
+  changePasswordPath: string;
+  changePassword: string;
+  buttonLogout: Button;
+  // classRed: string;
+  // path: string;
+  // exit: string;
+  attr: Record<string, string>;
+};
 
-blockAction.innerHTML = `
-<a class=${styles.action} href='/changeData'>Изменить данные</a>
-<hr class=${styles.line} />
-<a class=${styles.action} href='/changePassword'>Изменить пароль</a>
-<hr class=${styles.line} />
-<a class=${styles.exit} href='/'>Выход</a>
-`;
-
-export default blockAction;
+export default class BlockAction extends Block<BlockActionProps> {
+  render() {
+    return this._compile(tpl, this._props);
+  }
+}

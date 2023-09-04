@@ -1,5 +1,5 @@
-export default `<button
-class={{classButton}}
->
+const tpl = `
 <span class={{classSpan}}>{{name}}</span>
-</button>`;
+`;
+
+export default tpl;

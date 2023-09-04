@@ -1,13 +1,14 @@
-import login from "./pages/login/login";
-import registration from "./pages/registration/registration";
-import chats from "./pages/chats/chats";
-import profile from "./pages/profile/profile";
-import changeData from "./pages/change/data/changeData";
-import changePassword from "./pages/change/password/changePassword";
+import LoginPage from "./pages/login";
+import RegistrationPage from "./pages/registration";
+import ProfilePage from "./pages/profile";
+import ChangeDataPage from "./pages/changeData";
+import ChangePasswordPage from "./pages/changePassword";
 import Router from "./router";
-import "../styles/globals.css";
+import "../styles/globals.scss";
+import ChatsPage from "./pages/chats";
+import notFoundPage from "./pages/404";
 
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", () => {
   const app = document.querySelector("#app");
   if (!app) {
     return;
@@ -16,12 +17,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const router = new Router(app);
 
   router
-    .add("/", chats)
-    .add("/login", login)
-    .add("/registration", registration)
-    .add("/profile", profile)
-    .add("/changeData", changeData)
-    .add("/changePassword", changePassword);
+    .add("/messenger", new ChatsPage())
+    .add("/", new LoginPage())
+    .add("/sign-up", new RegistrationPage())
+    .add("/settings", new ProfilePage())
+    .add("/change-data", new ChangeDataPage())
+    .add("/change-password", new ChangePasswordPage())
+    .add("/not-found", notFoundPage);
 
   router.go(window.location.pathname);
 });

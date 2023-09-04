@@ -1,4 +1,6 @@
-export default `<div class={{classWrapper}}>
+const tpl = `
 <span class={{className}}>{{name}}</span>
 <span class={{classValue}}>{{value}}</span>
-</div>`;
+`;
+
+export default tpl;

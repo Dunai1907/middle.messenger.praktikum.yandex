@@ -1,19 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "allowJs": true,
-    "skipLibCheck": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "Node",
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "incremental": true
+    "esModuleInterop": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "strictNullChecks": true
   },
-  "include": ["**/*.ts", "src/router.js"],
+  "include": ["**/*.ts", "src/router.ts"],
   "exclude": ["node_modules"]
 }

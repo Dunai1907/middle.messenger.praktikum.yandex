@@ -2,24 +2,34 @@ This is a [js] project.
 
 ## Getting Started
 
-First, run the development server:
+To run the Next.js application, use `npm run start`.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Development Scripts
 
-Build
+These developer scripts are available:
 
-```bash
-npm run build
-# or
-yarn build
-```
+- `npm run build`: Compiles all TypeScript code. Compiles the static js application.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `npm run dev`: Starts the js application.
 
-## Deploy on Netlify
+- `npm run test`: Starts test.
 
-https://neon-peony-89b6b6.netlify.app/
+## Ports In Use
+
+These port is in use:
+
+- 3000: [js](http://localhost:3000/).
+
+## Netlify link
+
+- (https://neon-peony-89b6b6.netlify.app/).
+
+## For more information
+
+- user registration: (http://localhost:3000/sign-up).
+- user login: (http://localhost:3000).
+- messenger: (http://localhost:3000/messenger).
+- user profile: (http://localhost:3000/settings).
+- change data user: (http://localhost:3000/change-data).
+- change password: (http://localhost:3000/change-password).
+- 404: (http://localhost:3000/other).

@@ -1,4 +1,10 @@
-.login_wrapper {
+$blue: rgba(13, 153, 255, 1);
+$purple: rgba(51, 105, 243, 1);
+$white: rgba(255, 255, 255, 1);
+$red: rgba(255, 47, 47, 1);
+$dirtyGrey: rgba(153, 153, 153, 1);
+
+.loginWrapper {
   display: flex;
   min-height: 100vh;
   align-items: center;
@@ -6,7 +12,7 @@
   position: relative;
 }
 
-.form_block {
+.formBlock {
   display: flex;
   width: 340px;
   height: 450px;
@@ -14,11 +20,11 @@
   align-items: center;
   justify-content: center;
   padding: 15px;
-  border: 2px solid #929292;
+  border: 2px solid $dirtyGrey;
   border-radius: 12px;
 
   &:hover {
-    border-color: #0d99ff;
+    border-color: $blue;
   }
 }
 
@@ -29,26 +35,102 @@
   justify-content: center;
 }
 
-.unregistered {
-  width: auto;
-  margin-top: 20px;
-  font-family: Inter;
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 11px;
-  text-decoration: none;
-  color: rgba(51, 105, 243, 1);
+.line {
+  width: 280px;
+  border: 1px solid $purple;
 
   &:hover {
-    text-decoration: 2px underline #0d99ff;
+    border: 1px solid $blue;
   }
 }
 
-.line {
+.input {
+  width: 100%;
+  border: 0;
+  padding: 5px 0;
+  margin-bottom: 2px;
+  background-color: $white;
+
+  &:focus {
+    border: 1px solid $white;
+  }
+}
+
+.textLabel {
+  margin-top: 20px;
   width: 280px;
-  border: 1px solid rgba(51, 105, 243, 1);
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 9px;
+  color: $dirtyGrey;
 
   &:hover {
-    border: 1px solid #0d99ff;
+    text-decoration: underline 2px $blue;
   }
+}
+
+.buttonBig {
+  width: auto;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: $white;
+}
+
+.buttonSmall {
+  width: 280px;
+  height: 37px;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: $purple;
+
+  &:hover {
+    border: 1px solid $blue;
+  }
+}
+
+.buttonBigText {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+
+  &:hover {
+    text-decoration: underline $purple;
+  }
+}
+
+.buttonSmallText {
+  font-size: 13px;
+  line-height: 13px;
+  color: $white;
+
+  &:hover {
+    text-decoration: 2px underline $blue;
+  }
+}
+
+.error {
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 8px;
+  text-align: left;
+  color: $red;
+}
+
+.errorBorder {
+  border-radius: 5px;
+  border: 2px solid $red;
+}
+
+.inputControl {
+  display: flex;
+  flex-direction: column;
 }
