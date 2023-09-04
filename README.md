@@ -12,7 +12,7 @@ These developer scripts are available:
 
 - `npm run dev`: Starts the js application.
 
-- `npm run test`: Starts test.
+- `npm run test`: Starts the tests application.
 
 ## Ports In Use
 
