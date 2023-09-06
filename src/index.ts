@@ -6,6 +6,7 @@ import ChangePasswordPage from "./pages/changePassword";
 import Router from "./router";
 import "../styles/globals.scss";
 import ChatsPage from "./pages/chats";
+import notFoundPage from "./pages/404";
 
 window.addEventListener("DOMContentLoaded", () => {
   const app = document.querySelector("#app");
@@ -21,7 +22,8 @@ window.addEventListener("DOMContentLoaded", () => {
     .add("/sign-up", new RegistrationPage())
     .add("/settings", new ProfilePage())
     .add("/change-data", new ChangeDataPage())
-    .add("/change-password", new ChangePasswordPage());
+    .add("/change-password", new ChangePasswordPage())
+    .add("/not-found", notFoundPage);
 
   router.go(window.location.pathname);
 });
